@@ -2,14 +2,21 @@
   "dev": {
     "driver": "pg",
     "host": { "ENV": "DB_HOST" },
-    "database": { "ENV": "DB_DATABASE" },
+    "database": { "ENV": "DB_DATABASE_DEV" },
     "user": { "ENV": "DB_USER" },
     "password": { "ENV": "DB_PASSWORD" }
   },
   "test": {
     "driver": "pg",
     "host": { "ENV": "DB_HOST" },
-    "database": { "ENV": "DB_DATABASE" },
+    "database": { "ENV": "DB_DATABASE_TEST" },
+    "user": { "ENV": "DB_USER" },
+    "password": { "ENV": "DB_PASSWORD" }
+  },
+  "prod": {
+    "driver": "pg",
+    "host": { "ENV": "DB_HOST" },
+    "database": { "ENV": "DB_DATABASE_PROD" },
     "user": { "ENV": "DB_USER" },
     "password": { "ENV": "DB_PASSWORD" }
   }

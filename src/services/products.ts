@@ -7,7 +7,7 @@ const store = new ProductStore();
 // Get Products
 export const getProducts = async (_req: Request, res: Response) => {
   try {
-    const products = await new ProductStore().index();
+    const products = await store.index();
     res.json(products);
   } catch (err) {
     res.status(400);
@@ -19,7 +19,7 @@ export const getProducts = async (_req: Request, res: Response) => {
 export const getProduct = async (_req: Request, res: Response) => {
   try {
     const id: number = parseInt(_req.params.id);
-    const product = await new ProductStore().show(id);
+    const product = await store.show(id);
     res.json(product);
   } catch (err) {
     res.status(400);
@@ -34,7 +34,7 @@ export const addProduct = async (_req: Request, res: Response) => {
   const price: number = parseInt(_req.body.price);
 
   try {
-    const addedProduct = await new ProductStore().create({
+    const addedProduct = await store.create({
       name,
       price,
       category,
@@ -54,7 +54,7 @@ export const updateProduct = async (_req: Request, res: Response) => {
   const category: string = _req.body.category;
 
   try {
-    const updatedProduct = await new ProductStore().update({
+    const updatedProduct = await store.update({
       id,
       name,
       category,
@@ -71,7 +71,7 @@ export const updateProduct = async (_req: Request, res: Response) => {
 export const deleteProduct = async (_req: Request, res: Response) => {
   try {
     const id: number = parseInt(_req.params.id);
-    const product = await new ProductStore().delete(id);
+    const product = await store.delete(id);
     res.json(product);
   } catch (err) {
     res.status(400);

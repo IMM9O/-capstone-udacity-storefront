@@ -24,7 +24,9 @@ export class UserStore {
       const sql =
         'INSERT INTO users (firstname, lastname, password) VALUES ($1, $2, $3) RETURNING *';
 
-      const hashPassword = await this.getEncryptedPassword(p.password);
+      const hashPassword = await this.getEncryptedPassword(
+        p.password as string,
+      );
       const result = await conn.query(sql, [
         p.firstname,
         p.lastname,
@@ -53,8 +55,10 @@ export class UserStore {
     try {
       const conn = await Client.connect();
       const sql =
-        "UPDATE users SET firstname=$1, lastname=$2, password=$3 WHERE id=$4 RETURNING *";
-      const hashPassword = await this.getEncryptedPassword(p.password);
+        'UPDATE users SET firstname=$1, lastname=$2, password=$3 WHERE id=$4 RETURNING *';
+      const hashPassword = await this.getEncryptedPassword(
+        p.password as string,
+      );
       const result = await conn.query(sql, [
         p.firstname,
         p.lastname,

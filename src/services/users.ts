@@ -2,11 +2,12 @@ import { Request, Response } from 'express';
 import { UserStore } from '../models/User';
 
 /** CRUD Operations on product tables **/
+const store = new UserStore();
 
 // Get Users
 export const getUsers = async (_req: Request, res: Response) => {
   try {
-    const users = await new UserStore().index();
+    const users = await store.index();
     res.json(users);
   } catch (err) {
     res.status(400);
@@ -18,7 +19,7 @@ export const getUsers = async (_req: Request, res: Response) => {
 export const getUser = async (_req: Request, res: Response) => {
   try {
     const id: number = parseInt(_req.params.id);
-    const product = await new UserStore().show(id);
+    const product = await store.show(id);
     res.json(product);
   } catch (err) {
     res.status(400);
@@ -33,7 +34,7 @@ export const addUser = async (_req: Request, res: Response) => {
   const password: string = _req.body.password;
 
   try {
-    const addedUser = await new UserStore().create({
+    const addedUser = await store.create({
       firstname,
       lastname,
       password,
@@ -53,7 +54,7 @@ export const updateUser = async (_req: Request, res: Response) => {
   const password: string = _req.body.password;
 
   try {
-    const updatedUser = await new UserStore().update({
+    const updatedUser = await store.update({
       firstname,
       lastname,
       password,
@@ -70,7 +71,7 @@ export const updateUser = async (_req: Request, res: Response) => {
 export const deleteUser = async (_req: Request, res: Response) => {
   try {
     const id: number = parseInt(_req.params.id);
-    const product = await new UserStore().delete(id);
+    const product = await store.delete(id);
     res.json(product);
   } catch (err) {
     res.status(400);
