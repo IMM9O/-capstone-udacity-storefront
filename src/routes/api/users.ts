@@ -1,18 +1,27 @@
 import express from 'express';
+import {
+  addUser,
+  deleteUser,
+  getUser,
+  getUsers,
+  updateUser,
+} from '../../services/users';
 
 const users = express.Router();
 
 // Index [token required]
-users.get('/', (req, res) => res.send('All users'));
-
-// Show (get Request) [token required]
-users.get('/:id', (req, res) =>
-  res.send(`You are view user id = ${req.params.id}`),
-);
+users.get('/', getUsers);
 
 // post request [token required]
-users.post('/', (req, res) =>
-  res.send('User created successfully'),
-);
+users.post('/', addUser);
+
+// Show (get Request) [token required]
+users.get('/:id', getUser);
+
+// put request [token required]
+users.put('/:id', updateUser);
+
+// delete request [token required]
+users.delete('/:id', deleteUser);
 
 export default users;

@@ -1,18 +1,27 @@
 import express from 'express';
+import {
+  addProduct,
+  deleteProduct,
+  getProduct,
+  getProducts,
+  updateProduct,
+} from '../../services/products';
 
 const products = express.Router();
 
 // Index
-products.get('/', (req, res) => res.send('Index Route'));
-
-// Show (get Request)
-products.get('/:id', (req, res) =>
-  res.send(`You are view product id = ${req.params.id}`),
-);
+products.get('/', getProducts);
 
 // post request [token required]
-products.post('/', (req, res) =>
-  res.send('The product created successfully'),
-);
+products.post('/', addProduct);
+
+// Show (get Request)
+products.get('/:id', getProduct);
+
+// put request [token required]
+products.put('/:id', updateProduct);
+
+// delete request [token required]
+products.delete('/:id', deleteProduct);
 
 export default products;
