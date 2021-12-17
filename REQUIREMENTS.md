@@ -5,20 +5,31 @@ These are the notes from a meeting with the frontend developer that describe wha
 
 ## API Endpoints
 #### Products
-- Index 
-- Show
-- Create [token required]
-- [OPTIONAL] Top 5 most popular products 
-- [OPTIONAL] Products by category (args: product category)
+- ✅ Index `GET [/api/products/]`
+- ✅ Show `GET [/api/products/:id]`
+- 🚧 Create `POST [/api/products/]` [token required]
+- 🎯 [OPTIONAL] Top 5 most popular products 
+- 🎯 [OPTIONAL] Products by category (args: product category)
+- 🚀 [Added] Update `PUT [/api/products/]` [token required]
+- 🚀 [Added] Delete `DELETE [/api/products/]` [token required]
 
 #### Users
-- Index [token required]
-- Show [token required]
-- Create N[token required]
+- 🚧 Index `GET [/api/users/]` [token required]
+- 🚧 Show `GET [/api/users/:id]` [token required]
+- 🚧 Create `POST [/api/users/]` [token required]
+- 🚀 [Added] Update `PUT [/api/users/]` [token required]
+- 🚀 [Added] Delete `DELETE [/api/users/]` [token required]
 
 #### Orders
-- Current Order by user (args: user id)[token required]
-- [OPTIONAL] Completed Orders by user (args: user id)[token required]
+- 🚧 Current Order by user (args: user id) `GET [/api/orders/:userId]` [token required]
+- 🚧 [OPTIONAL] Completed Orders by user (args: user id) `GET [/api/orders/completed/:userId]` [token required]
+- 🚀 [Added] Show `GET [/api/orders/:id]` [token required]
+- 🚀 [Added] Create `POST [/api/orders/]` [token required]
+- 🚀 [Added] Update `PUT [/api/orders/]` [token required]
+- 🚀 [Added] Delete `DELETE [/api/orders/]` [token required]
+- 🚀 [Added] Active orders by user (args: user id) `GET [/api/orders/active/:userId]` [token required]
+- 🚀 [Added] Add products to order `POST [/api/orders/product/:orderId]` [token required]
+- 🚀 [Added] Get order products `GET [/api/orders/product/:orderId]` [token required]
 
 ## Data Shapes
 #### Product
@@ -27,11 +38,33 @@ These are the notes from a meeting with the frontend developer that describe wha
 - price
 - [OPTIONAL] category
 
+```sql
+
+CREATE TABLE products(
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    price INTEGER NOT NULL,
+    category VARCHAR(50)
+);
+
+```
+
 #### User
 - id
 - firstName
 - lastName
 - password
+
+```sql
+
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    firstname VARCHAR(50),
+    lastname VARCHAR(50),
+    password VARCHAR(250)
+);
+
+```
 
 #### Orders
 - id
@@ -39,3 +72,24 @@ These are the notes from a meeting with the frontend developer that describe wha
 - quantity of each product in the order
 - user_id
 - status of order (active or complete)
+
+```sql
+
+CREATE TABLE orders(
+    id SERIAL PRIMARY KEY,
+    user_id bigint,
+    status VARCHAR(20),
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE order_products (
+    id SERIAL PRIMARY KEY,
+    quantity integer,
+    order_id bigint,
+    product_id bigint,
+    FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE,
+    FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE
+);
+
+```
+
