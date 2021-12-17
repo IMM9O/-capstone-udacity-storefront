@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { UserStore } from '../models/User';
+import jwt from 'jsonwebtoken';
 
 /** CRUD Operations on product tables **/
 const store = new UserStore();
@@ -28,7 +29,7 @@ export const getUser = async (_req: Request, res: Response) => {
 };
 
 // Create
-export const addUser = async (_req: Request, res: Response) => {
+export const createUser = async (_req: Request, res: Response) => {
   const firstname: string = _req.body.firstname;
   const lastname: string = _req.body.lastname;
   const password: string = _req.body.password;
@@ -39,7 +40,16 @@ export const addUser = async (_req: Request, res: Response) => {
       lastname,
       password,
     });
-    res.json(addedUser);
+
+    const token = jwt.sign(
+      {
+        firstname: addedUser.firstname,
+        lastname: addedUser.lastname,
+      },
+      process.env.TOKEN_SECRET as string,
+    );
+
+    res.json(token);
   } catch (err) {
     res.status(400);
     res.json(err);
@@ -73,6 +83,33 @@ export const deleteUser = async (_req: Request, res: Response) => {
     const id: number = parseInt(_req.params.id);
     const product = await store.delete(id);
     res.json(product);
+  } catch (err) {
+    res.status(400);
+    res.json(err);
+  }
+};
+
+// authenticate
+export const authenticate = async (_req: Request, res: Response) => {
+  try {
+    const id: number = parseInt(_req.params.id);
+    const plainPassword = _req.body.password;
+    const user = await store.authenticate(id, plainPassword);
+
+    if (user) {
+      const token = jwt.sign(
+        {
+          firstname: user.firstname,
+          lastname: user.lastname,
+        },
+        process.env.TOKEN_SECRET as string,
+      );
+
+      res.json(token);
+    } else {
+      res.status(404);
+      res.json({ error: 'User Not Found!' });
+    }
   } catch (err) {
     res.status(400);
     res.json(err);

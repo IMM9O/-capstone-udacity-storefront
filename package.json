@@ -2,15 +2,15 @@
   "name": "udacity-storefront",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "lint": "eslint . --ext .ts",
-    "watch": "tsc-watch --esModuleInterop src/server.ts --outDir ./dist --onSuccess 'node ./dist/server.js'",
+    "watch": "tsc-watch --esModuleInterop src/index.ts --outDir ./dist --onSuccess 'node ./dist/index.js'",
     "prettier": "prettier --config .prettierrc src/**/*.ts --write",
     "jasmine": "jasmine",
     "test": "cross-env NODE_ENV=TEST db-migrate --env test up && jasmine-ts && db-migrate db:drop test",
     "build": "npx tsc",
-    "start": "nodemon src/server.ts",
+    "start": "nodemon src/index.ts",
     "db:up": "db-migrate up",
     "db:down": "db-migrate down"
   },
@@ -21,6 +21,7 @@
     "@types/bcrypt": "^5.0.0",
     "@types/express": "^4.17.13",
     "@types/jasmine": "^3.10.2",
+    "@types/jsonwebtoken": "^8.5.6",
     "@types/node": "^16.11.11",
     "@types/pg": "^8.6.1",
     "@types/supertest": "^2.0.11",
@@ -46,6 +47,7 @@
     "db-migrate-pg": "^1.2.2",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
     "pg": "^8.7.1"
   }
 }

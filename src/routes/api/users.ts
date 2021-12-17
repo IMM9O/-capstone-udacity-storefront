@@ -1,6 +1,8 @@
 import express from 'express';
+import { verifyAuthToken } from '../../middleware/auth';
 import {
-  addUser,
+  createUser,
+  authenticate,
   deleteUser,
   getUser,
   getUsers,
@@ -10,18 +12,21 @@ import {
 const users = express.Router();
 
 // Index [token required]
-users.get('/', getUsers);
+users.get('/', [verifyAuthToken], getUsers);
 
 // post request [token required]
-users.post('/', addUser);
+users.post('/', createUser);
 
 // Show (get Request) [token required]
-users.get('/:id', getUser);
+users.get('/:id', [verifyAuthToken], getUser);
 
 // put request [token required]
-users.put('/:id', updateUser);
+users.put('/:id', [verifyAuthToken], updateUser);
 
 // delete request [token required]
-users.delete('/:id', deleteUser);
+users.delete('/:id', [verifyAuthToken], deleteUser);
+
+// auth user by id
+users.post('/:id/authenticate', authenticate);
 
 export default users;

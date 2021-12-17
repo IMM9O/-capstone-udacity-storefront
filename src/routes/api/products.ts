@@ -1,6 +1,7 @@
 import express from 'express';
+import { verifyAuthToken } from '../../middleware/auth';
 import {
-  addProduct,
+  createProduct,
   deleteProduct,
   getProduct,
   getProducts,
@@ -13,15 +14,15 @@ const products = express.Router();
 products.get('/', getProducts);
 
 // post request [token required]
-products.post('/', addProduct);
+products.post('/', [verifyAuthToken], createProduct);
 
 // Show (get Request)
 products.get('/:id', getProduct);
 
 // put request [token required]
-products.put('/:id', updateProduct);
+products.put('/:id', [verifyAuthToken], updateProduct);
 
 // delete request [token required]
-products.delete('/:id', deleteProduct);
+products.delete('/:id', [verifyAuthToken], deleteProduct);
 
 export default products;

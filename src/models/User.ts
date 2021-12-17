@@ -4,8 +4,11 @@ import Client from '../config/database';
 import { User } from '../types/User';
 
 export class UserStore {
-  async getEncryptedPassword(pass: string): Promise<string> {
-    return await bcrypt.hash(pass, 10);
+  getEncryptedPassword(pass: string): string {
+    return bcrypt.hashSync(
+      pass + process.env.BCRYPT_PASSWORD,
+      parseInt(process.env.SALT_ROUNDS as string),
+    );
   }
   async index(): Promise<User[]> {
     try {
@@ -24,7 +27,7 @@ export class UserStore {
       const sql =
         'INSERT INTO users (firstname, lastname, password) VALUES ($1, $2, $3) RETURNING *';
 
-      const hashPassword = await this.getEncryptedPassword(
+      const hashPassword = this.getEncryptedPassword(
         p.password as string,
       );
       const result = await conn.query(sql, [
@@ -56,7 +59,7 @@ export class UserStore {
       const conn = await Client.connect();
       const sql =
         'UPDATE users SET firstname=$1, lastname=$2, password=$3 WHERE id=$4 RETURNING *';
-      const hashPassword = await this.getEncryptedPassword(
+      const hashPassword = this.getEncryptedPassword(
         p.password as string,
       );
       const result = await conn.query(sql, [
@@ -80,6 +83,34 @@ export class UserStore {
       const user = result.rows[0];
       conn.release();
       return user;
+    } catch (err) {
+      throw new Error(`Cannot delete this User ${err}`);
+    }
+  }
+  async authenticate(
+    id: number,
+    password: string,
+  ): Promise<User | null> {
+    try {
+      const conn = await Client.connect();
+      const sql = 'SELECT * FROM users WHERE id=$1';
+      const result = await conn.query(sql, [id]);
+
+      if (result.rows.length) {
+
+        const user = result.rows[0];
+        console.log(user)
+        if (
+          bcrypt.compareSync(
+            password + process.env.BCRYPT_PASSWORD,
+            user.password,
+          )
+        ) {
+          return user;
+        }
+      }
+
+      return null;
     } catch (err) {
       throw new Error(`Cannot delete this User ${err}`);
     }

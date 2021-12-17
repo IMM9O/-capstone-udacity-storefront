@@ -1,4 +1,5 @@
 import express from 'express';
+import { verifyAuthToken } from '../../middleware/auth';
 import {
   addOrder,
   deleteOrder,
@@ -14,29 +15,33 @@ import {
 const orders = express.Router();
 
 // Index [token required]
-orders.get('/:userId', getOrders);
+orders.get('/:userId', [verifyAuthToken], getOrders);
 
 // Get Competed Orders
-orders.get('/completed/:userId', getCompletedOrders);
+orders.get(
+  '/completed/:userId',
+  [verifyAuthToken],
+  getCompletedOrders,
+);
 // Get Active Orders
-orders.get('/active/:userId', getActiveOrders);
+orders.get('/active/:userId', [verifyAuthToken], getActiveOrders);
 
 // post request [token required]
-orders.post('/', addOrder);
+orders.post('/', [verifyAuthToken], addOrder);
 
 // show request [token required]
-orders.get('/:id', getOrder);
+orders.get('/:id', [verifyAuthToken], getOrder);
 
 // put request [token required]
-orders.put('/:id', updateOrder);
+orders.put('/:id', [verifyAuthToken], updateOrder);
 
 // delete request [token required]
-orders.delete('/:id', deleteOrder);
+orders.delete('/:id', [verifyAuthToken], deleteOrder);
 
 // add products to order [token required]
-orders.post('/:id/products', addProduct);
+orders.post('/:id/products', [verifyAuthToken], addProduct);
 
 // get order products [token required]
-orders.get('/:id/products', getOrderProducts);
+orders.get('/:id/products', [verifyAuthToken], getOrderProducts);
 
 export default orders;

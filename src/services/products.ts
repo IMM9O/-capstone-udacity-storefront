@@ -28,7 +28,7 @@ export const getProduct = async (_req: Request, res: Response) => {
 };
 
 // Create
-export const addProduct = async (_req: Request, res: Response) => {
+export const createProduct = async (_req: Request, res: Response) => {
   const name: string = _req.body.name;
   const category: string = _req.body.category;
   const price: number = parseInt(_req.body.price);
