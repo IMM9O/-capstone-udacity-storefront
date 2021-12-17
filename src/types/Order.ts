@@ -10,3 +10,8 @@ export type OrderProduct = {
   product_id: number;
   quantity: number;
 };
+
+export type OrderItem = {
+  product_id: number;
+  quantity: number;
+};

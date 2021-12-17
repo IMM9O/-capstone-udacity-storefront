@@ -7,6 +7,8 @@ import {
   getOrder,
   getOrders,
   updateOrder,
+  addProduct,
+  getOrderProducts,
 } from '../../services/orders';
 
 const orders = express.Router();
@@ -30,5 +32,11 @@ orders.put('/:id', updateOrder);
 
 // delete request [token required]
 orders.delete('/:id', deleteOrder);
+
+// add products to order [token required]
+orders.post('/product/:orderId', addProduct);
+
+// get order products [token required]
+orders.get('/product/:orderId', getOrderProducts);
 
 export default orders;

@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { OrderStore } from '../models/Order';
+import { OrderItem } from '../types/Order';
 
 /** CRUD Operations on order tables **/
 const store = new OrderStore();
@@ -103,6 +104,34 @@ export const deleteOrder = async (_req: Request, res: Response) => {
     const id: number = parseInt(_req.params.id);
     const order = await store.delete(id);
     res.json(order);
+  } catch (err) {
+    res.status(400);
+    res.json(err);
+  }
+};
+
+export const addProduct = async (_req: Request, res: Response) => {
+  try {
+    const orderId: number = parseInt(_req.params.orderId);
+    const payload = _req.body.products as OrderItem[];
+
+    payload.forEach(async item => {
+      await store.addProduct(orderId, item.product_id, item.quantity);
+    });
+
+    const products = await store.getOrderProducts(orderId);
+    res.json(products);
+  } catch (err) {
+    res.status(400);
+    res.json(err);
+  }
+};
+
+export const  getOrderProducts = async (_req: Request, res: Response) => {
+  try {
+    const orderId: number = parseInt(_req.params.orderId);
+    const products = await store.getOrderProducts(orderId);
+    res.json(products);
   } catch (err) {
     res.status(400);
     res.json(err);

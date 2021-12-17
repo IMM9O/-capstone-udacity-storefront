@@ -61,8 +61,8 @@ export class OrderStore {
 
   // Add each product in the order to the order_products table
   async addProduct(
-    orderId: string,
-    productId: string,
+    orderId: number,
+    productId: number,
     quantity: number,
   ): Promise<OrderProduct> {
     try {
