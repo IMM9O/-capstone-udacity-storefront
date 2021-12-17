@@ -34,9 +34,9 @@ orders.put('/:id', updateOrder);
 orders.delete('/:id', deleteOrder);
 
 // add products to order [token required]
-orders.post('/product/:orderId', addProduct);
+orders.post('/:id/products', addProduct);
 
 // get order products [token required]
-orders.get('/product/:orderId', getOrderProducts);
+orders.get('/:id/products', getOrderProducts);
 
 export default orders;

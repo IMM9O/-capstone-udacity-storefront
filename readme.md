@@ -176,12 +176,12 @@ See also [REQUIREMENTS](./REQUIREMENTS.md)
             <td>✔</td>
         </tr>
         <tr>
-            <td>/api/orders/product/:orderId</td>
+            <td>/api/orders/:id/products</td>
             <td>POST</td>
             <td>✔</td>
         </tr>
         <tr>
-            <td>/api/orders/product/:orderId</td>
+            <td>/api/orders/:id/products</td>
             <td>GET</td>
             <td>✔</td>
         </tr>

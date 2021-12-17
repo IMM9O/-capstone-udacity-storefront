@@ -112,7 +112,7 @@ export const deleteOrder = async (_req: Request, res: Response) => {
 
 export const addProduct = async (_req: Request, res: Response) => {
   try {
-    const orderId: number = parseInt(_req.params.orderId);
+    const orderId: number = parseInt(_req.params.id);
     const payload = _req.body.products as OrderItem[];
 
     payload.forEach(async item => {
@@ -129,7 +129,7 @@ export const addProduct = async (_req: Request, res: Response) => {
 
 export const  getOrderProducts = async (_req: Request, res: Response) => {
   try {
-    const orderId: number = parseInt(_req.params.orderId);
+    const orderId: number = parseInt(_req.params.id);
     const products = await store.getOrderProducts(orderId);
     res.json(products);
   } catch (err) {
