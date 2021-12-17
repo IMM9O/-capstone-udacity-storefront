@@ -7,24 +7,24 @@ const store = new OrderStore();
 const userStore = new UserStore();
 
 describe('Orders Model', () => {
-  /**
-   * Note: create one user before running any 
-   */
   let user: User;
-  beforeAll(async () => {
-    await resetSequence('orders');
+  beforeAll(async (done) => {
     await resetSequence('users');
+    await resetSequence('orders');
     user = await userStore.create({
       firstname: 'Islam',
       lastname: 'M',
       password: 'Password',
     });
+    console.log(user)
+    done();
   });
 
-  afterAll(async () => {
+  afterAll(async (done) => {
     await userStore.delete(1);
     await resetSequence('users');
     await resetSequence('orders');
+    done();
   });
 
   it('should have a show method', () => {
@@ -100,7 +100,9 @@ describe('Orders Model', () => {
   });
 
   it('getUserCompletedOrders method should return user orders with competed status', async () => {
-    const result = await store.getUserCompletedOrders(user.id as number);
+    const result = await store.getUserCompletedOrders(
+      user.id as number,
+    );
     expect(result).toEqual([
       {
         id: 1,

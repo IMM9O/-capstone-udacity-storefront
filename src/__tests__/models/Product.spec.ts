@@ -4,12 +4,14 @@ import { resetSequence } from '../helpers/truncate';
 const store = new ProductStore();
 
 describe('Product Model', () => {
-  beforeAll(async () => {
+  beforeAll(async (done) => {
     await resetSequence('products');
+    done();
   });
 
-  afterAll(async () => {
+  afterAll(async (done) => {
     await resetSequence('products');
+    done();
   });
 
   it('should have an index method', () => {
