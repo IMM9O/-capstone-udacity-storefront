@@ -24,22 +24,39 @@ It is a simple server side application provide APIs to manage, interact with onl
 
 1. Installation is done using the [npm install command](https://docs.npmjs.com/downloading-and-installing-packages-locally): `npm install`
 
-2. Setup database `npm run db:up`
+2. Open Sql Shell
 
-3. Make a copy for `.env.example` file to `.env` file and then change the variables to match your environment
+3. Connect to the default postgres database `psql -U postgres`
+
+4. In psql run the following to create the dev and test database
+
+```sql
+/** DEV database **/
+CREATE DATABASE udacity_storefront_dev;
+/** Test database **/
+CREATE DATABASE udacity_storefront_test;
+/** Production database **/
+CREATE DATABASE udacity_storefront;
+```
+
+5. Setup database `npm run db:up`
+
+
+6. Make a copy for `.env.example` file to `.env` file and then change the variables to match your environment
+
+> Don't forget to replace {database_password} with your current postgres password
 
 ```env
 NODE_ENV=DEV
-DB_HOST=
-DB_USER=
-DB_PASSWORD=
-DB_DATABASE_DEV=
-DB_DATABASE_TEST=
-DB_DATABASE_PROD=
-
+DB_HOST=127.0.0.1
+DB_USER=postgres
+DB_PASSWORD={database_password}
+DB_DATABASE_DEV=udacity_storefront_dev
+DB_DATABASE_TEST=udacity_storefront_test
+DB_DATABASE_PROD=udacity_storefront
 ```
 
-4. To start the app run `npm start`
+7. To start the app run `npm start`
 
 ## Available Scripts
 
@@ -60,7 +77,9 @@ DB_DATABASE_PROD=
 
 ## APIs
 
-### Available APIs
+### Available APIs 
+
+See also [REQUIREMENTS](./REQUIREMENTS.md)
 
 <table>
     <th>
