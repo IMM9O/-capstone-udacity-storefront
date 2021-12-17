@@ -73,97 +73,97 @@ DB_DATABASE_PROD=
     <tbody>
         <tr>
             <td>/api/products/</td>
-            <td>GET<td>
+            <td>GET</td>
             <td>❌</td>
         </tr>
         <tr>
             <td>/api/products/:id</td>
-            <td>GET<td>
+            <td>GET</td>
             <td>❌</td>
         </tr>
         <tr>
             <td>/api/products/</td>
-            <td>POST<td>
+            <td>POST</td>
             <td>✔</td>
         </tr>
         <tr>
             <td>/api/products/:id</td>
-            <td>UPDATE<td>
+            <td>UPDATE</td>
             <td>✔</td>
         </tr>
         <tr>
             <td>/api/products/:id</td>
-            <td>DELETE<td>
+            <td>DELETE</td>
             <td>✔</td>
         </tr>
         <tr>
             <td>/api/users/</td>
-            <td>GET<td>
+            <td>GET</td>
             <td>✔</td>
         </tr>
         <tr>
             <td>/api/users/:id</td>
-            <td>GET<td>
+            <td>GET</td>
             <td>✔</td>
         </tr>
         <tr>
             <td>/api/users/</td>
-            <td>POST<td>
+            <td>POST</td>
             <td>✔</td>
         </tr>
         <tr>
             <td>/api/users/:id</td>
-            <td>UPDATE<td>
+            <td>UPDATE</td>
             <td>✔</td>
         </tr>
         <tr>
             <td>/api/users/:id</td>
-            <td>DELETE<td>
+            <td>DELETE</td>
             <td>✔</td>
         </tr>
         <tr>
             <td>/api/orders/:userId</td>
-            <td>GET<td>
+            <td>GET</td>
             <td>✔</td>
         </tr>
         <tr>
             <td>/api/orders/completed/:userId</td>
-            <td>GET<td>
+            <td>GET</td>
             <td>✔</td>
         </tr>
         <tr>
             <td>/api/orders/active/:userId</td>
-            <td>GET<td>
+            <td>GET</td>
             <td>✔</td>
         </tr>
         <tr>
             <td>/api/orders/:id</td>
-            <td>GET<td>
+            <td>GET</td>
             <td>✔</td>
         </tr>
         <tr>
             <td>/api/orders/</td>
-            <td>POST<td>
+            <td>POST</td>
             <td>✔</td>
         </tr>
         <tr>
             <td>/api/orders/:id</td>
-            <td>UPDATE<td>
+            <td>UPDATE</td>
             <td>✔</td>
         </tr>
         <tr>
             <td>/api/orders/:id</td>
-            <td>DELETE<td>
+            <td>DELETE</td>
             <td>✔</td>
         </tr>
         <tr>
             <td>/api/orders/product/:orderId</td>
-            <td>POST<td>
+            <td>POST</td>
             <td>✔</td>
         </tr>
         <tr>
             <td>/api/orders/product/:orderId</td>
-            <td>GET<td>
+            <td>GET</td>
             <td>✔</td>
         </tr>
     <tbody>
