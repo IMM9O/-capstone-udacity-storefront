@@ -13,11 +13,11 @@ const products = express.Router();
 // Index
 products.get('/', getProducts);
 
-// post request [token required]
-products.post('/', [verifyAuthToken], createProduct);
-
 // Show (get Request)
 products.get('/:id', getProduct);
+
+// post request [token required]
+products.post('/', [verifyAuthToken], createProduct);
 
 // put request [token required]
 products.put('/:id', [verifyAuthToken], updateProduct);

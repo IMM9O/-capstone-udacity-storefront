@@ -54,6 +54,9 @@ DB_PASSWORD={database_password}
 DB_DATABASE_DEV=udacity_storefront_dev
 DB_DATABASE_TEST=udacity_storefront_test
 DB_DATABASE_PROD=udacity_storefront
+BCRYPT_PASSWORD=
+SALT_ROUNDS=
+TOKEN_SECRET=
 ```
 
 7. To start the app run `npm start`
@@ -128,7 +131,7 @@ See also [REQUIREMENTS](./REQUIREMENTS.md)
         <tr>
             <td>/api/users/</td>
             <td>POST</td>
-            <td>✔</td>
+            <td>❌</td>
         </tr>
         <tr>
             <td>/api/users/:id</td>
@@ -139,6 +142,11 @@ See also [REQUIREMENTS](./REQUIREMENTS.md)
             <td>/api/users/:id</td>
             <td>DELETE</td>
             <td>✔</td>
+        </tr>
+        <tr>
+            <td>/api/users/:id/authenticate</td>
+            <td>POST</td>
+            <td>❌</td>
         </tr>
         <tr>
             <td>/api/orders/:userId</td>
