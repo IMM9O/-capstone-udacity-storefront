@@ -127,7 +127,10 @@ export const addProduct = async (_req: Request, res: Response) => {
   }
 };
 
-export const  getOrderProducts = async (_req: Request, res: Response) => {
+export const getOrderProducts = async (
+  _req: Request,
+  res: Response,
+) => {
   try {
     const orderId: number = parseInt(_req.params.id);
     const products = await store.getOrderProducts(orderId);
