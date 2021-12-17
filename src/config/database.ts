@@ -1,4 +1,4 @@
-import { Pool } from 'pg';
+import { Pool, types } from 'pg';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -13,6 +13,8 @@ const {
 } = process.env;
 
 console.log(NODE_ENV);
+// Issue when parce bigInit column 👉 https://stackoverflow.com/questions/39168501/pg-promise-returns-integers-as-string 
+types.setTypeParser(20, parseInt);
 
 const getDatabaseName = (env: string) => {
   switch (env) {
