@@ -1,8 +1,17 @@
 import { UserStore } from '../../models/User';
+import { resetSequence } from '../helpers/truncate';
 
 const store = new UserStore();
 
 describe('User Model', () => {
+  beforeAll(async () => {
+    await resetSequence('users');
+  });
+
+  afterAll(async () => {
+    await resetSequence('users');
+  });
+
   it('should have an index method', () => {
     expect(store.index).toBeDefined();
   });
