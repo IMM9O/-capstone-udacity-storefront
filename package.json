@@ -8,11 +8,11 @@
     "watch": "tsc-watch --esModuleInterop src/index.ts --outDir ./dist --onSuccess 'node ./dist/index.js'",
     "prettier": "prettier --config .prettierrc src/**/*.ts --write",
     "jasmine": "jasmine",
-    "test": "cross-env NODE_ENV=TEST db-migrate --env test up && jasmine-ts && db-migrate db:drop test",
+    "test": "cross-env NODE_ENV=test db-migrate reset --env test && db-migrate up --env test && jasmine-ts",
     "build": "npx tsc",
     "start": "nodemon src/index.ts",
     "db:up": "db-migrate up",
-    "db:down": "db-migrate down"
+    "db:down": "db-migrate reset"
   },
   "keywords": [],
   "author": "",

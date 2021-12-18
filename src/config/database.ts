@@ -18,13 +18,13 @@ types.setTypeParser(20, parseInt);
 
 const getDatabaseName = (env: string) => {
   switch (env) {
-    case 'DEV': {
+    case 'dev': {
       return DB_DATABASE_DEV;
     }
-    case 'TEST': {
+    case 'test': {
       return DB_DATABASE_TEST;
     }
-    case 'PROD': {
+    case 'prod': {
       return DB_DATABASE_PROD;
     }
   }

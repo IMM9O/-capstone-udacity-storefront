@@ -47,7 +47,7 @@ CREATE DATABASE udacity_storefront;
 > Don't forget to replace {database_password} with your current postgres password
 
 ```env
-NODE_ENV=DEV
+NODE_ENV=dev
 DB_HOST=127.0.0.1
 DB_USER=postgres
 DB_PASSWORD={database_password}

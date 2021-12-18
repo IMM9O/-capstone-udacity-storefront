@@ -1,28 +1,15 @@
 import { OrderStore } from '../../models/Order';
 import { UserStore } from '../../models/User';
-import { resetSequence } from '../helpers/truncate';
-
-const store = new OrderStore();
-const userStore = new UserStore();
 
 describe('Orders Model', () => {
-  beforeAll(async done => {
-    await resetSequence('orders');
-    await resetSequence('users');
-    done();
-  });
-
-  afterAll(async done => {
-    await resetSequence('orders');
-    await resetSequence('users');
-    done();
-  });
+  const store = new OrderStore();
+  const userStore = new UserStore();
 
   it('create user method should create a new user', async () => {
     const result = await userStore.create({
       firstname: 'Islam',
       lastname: 'Muhammad',
-      password: 'pass123',
+      password: 'Password',
     });
     expect(result.id).toEqual(1);
     expect(result.firstname).toEqual('Islam');
@@ -124,6 +111,4 @@ describe('Orders Model', () => {
     const result = await userStore.index();
     expect(result).toEqual([]);
   });
-
-
 });

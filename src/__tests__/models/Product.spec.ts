@@ -1,18 +1,7 @@
 import { ProductStore } from '../../models/Product';
-import { resetSequence } from '../helpers/truncate';
-
-const store = new ProductStore();
 
 describe('Product Model', () => {
-  beforeAll(async (done) => {
-    await resetSequence('products');
-    done();
-  });
-
-  afterAll(async (done) => {
-    await resetSequence('products');
-    done();
-  });
+  const store = new ProductStore();
 
   it('should have an index method', () => {
     expect(store.index).toBeDefined();
