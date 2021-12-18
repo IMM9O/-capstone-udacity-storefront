@@ -1,30 +1,32 @@
 import { OrderStore } from '../../models/Order';
 import { UserStore } from '../../models/User';
-import { User } from '../../types/User';
 import { resetSequence } from '../helpers/truncate';
 
 const store = new OrderStore();
 const userStore = new UserStore();
 
 describe('Orders Model', () => {
-  let user: User;
-  beforeAll(async (done) => {
-    await resetSequence('users');
-    await resetSequence('orders');
-    user = await userStore.create({
-      firstname: 'Islam',
-      lastname: 'M',
-      password: 'Password',
-    });
-    console.log(user)
+  beforeAll(async done => {
+    const users = await resetSequence('users');
+    const orders = await resetSequence('orders');
     done();
   });
 
-  afterAll(async (done) => {
-    await userStore.delete(1);
-    await resetSequence('users');
-    await resetSequence('orders');
+  afterAll(async done => {
+    const users = await resetSequence('users');
+    const orders = await resetSequence('orders');
     done();
+  });
+
+  it('create user method should create a new user', async () => {
+    const result = await userStore.create({
+      firstname: 'Islam',
+      lastname: 'Muhammad',
+      password: 'pass123',
+    });
+    expect(result.id).toEqual(1);
+    expect(result.firstname).toEqual('Islam');
+    expect(result.lastname).toEqual('Muhammad');
   });
 
   it('should have a show method', () => {
@@ -45,7 +47,7 @@ describe('Orders Model', () => {
 
   it('create method should add an order', async () => {
     const result = await store.create({
-      user_id: user.id as number,
+      user_id: 1,
       status: 'active',
     });
     expect(result).toEqual({
@@ -56,7 +58,7 @@ describe('Orders Model', () => {
   });
 
   it('getUserOrders method should return a list of orders made by one user', async () => {
-    const result = await store.getUserOrders(user.id as number);
+    const result = await store.getUserOrders(1);
     expect(result).toEqual([
       {
         id: 1,
@@ -76,7 +78,7 @@ describe('Orders Model', () => {
   });
 
   it('getUserActiveOrders method should return user orders with active status', async () => {
-    const result = await store.getUserActiveOrders(user.id as number);
+    const result = await store.getUserActiveOrders(1);
     expect(result).toEqual([
       {
         id: 1,
@@ -100,9 +102,7 @@ describe('Orders Model', () => {
   });
 
   it('getUserCompletedOrders method should return user orders with competed status', async () => {
-    const result = await store.getUserCompletedOrders(
-      user.id as number,
-    );
+    const result = await store.getUserCompletedOrders(1);
     expect(result).toEqual([
       {
         id: 1,
@@ -113,8 +113,16 @@ describe('Orders Model', () => {
   });
 
   it('delete method should remove the order', async () => {
-    store.delete(1);
-    const result = await store.getUserOrders(user.id as number);
+    await store.delete(1);
+    const result = await store.getUserOrders(1);
     expect(result).toEqual([]);
   });
+
+  it('delete user method should remove the user', async () => {
+    await userStore.delete(1);
+    const result = await userStore.index();
+    expect(result).toEqual([]);
+  });
+
+
 });

@@ -42,9 +42,6 @@ describe('User Model', () => {
     });
     expect(result.firstname).toEqual('Islam');
     expect(result.lastname).toEqual('Muhammad');
-    expect(
-      ((result.password as unknown) as string).length,
-    ).toBeGreaterThanOrEqual(60);
     expect(result.password).not.toEqual('Password');
   });
 
