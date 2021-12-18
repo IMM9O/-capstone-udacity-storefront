@@ -9,6 +9,7 @@
     "prettier": "prettier --config .prettierrc src/**/*.ts --write",
     "jasmine": "jasmine",
     "test": "cross-env NODE_ENV=test db-migrate reset --env test && db-migrate up --env test && jasmine-ts",
+    "test:windows": "set NODE_ENV=test& db-migrate reset --env test && db-migrate up --env test && jasmine-ts",
     "build": "npx tsc",
     "start": "nodemon src/index.ts",
     "db:up": "db-migrate up",
