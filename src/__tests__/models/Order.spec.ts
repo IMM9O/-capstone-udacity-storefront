@@ -7,14 +7,14 @@ const userStore = new UserStore();
 
 describe('Orders Model', () => {
   beforeAll(async done => {
-    const users = await resetSequence('users');
-    const orders = await resetSequence('orders');
+    await resetSequence('orders');
+    await resetSequence('users');
     done();
   });
 
   afterAll(async done => {
-    const users = await resetSequence('users');
-    const orders = await resetSequence('orders');
+    await resetSequence('orders');
+    await resetSequence('users');
     done();
   });
 
