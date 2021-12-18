@@ -67,9 +67,9 @@ describe('User Model', () => {
   });
 
   it('delete method should remove the user', async () => {
-    store.delete(1);
+    const deletedUser = await store.delete(1);
+    expect(deletedUser.id).toEqual(1);
     const result = await store.index();
-
     expect(result).toEqual([]);
   });
 });
