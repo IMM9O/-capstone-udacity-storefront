@@ -41,7 +41,7 @@ describe('Test orders endpoint responses', () => {
     const response = await request.post(`${endpoint}/1/products`);
     expect(response.status).toBe(401);
   });
-  xit('Get order products endpoint should return status code 401 if no token in header', async () => {
+  it('Get order products endpoint should return status code 401 if no token in header', async () => {
     const response = await request.get(`${endpoint}/1/products`);
     expect(response.status).toBe(401);
   });

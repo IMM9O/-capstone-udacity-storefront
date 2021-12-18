@@ -105,10 +105,11 @@ export class UserStore {
             user.password,
           )
         ) {
+          conn.release();
           return user;
         }
       }
-
+      conn.release();
       return null;
     } catch (err) {
       throw new Error(`Cannot delete this User ${err}`);
