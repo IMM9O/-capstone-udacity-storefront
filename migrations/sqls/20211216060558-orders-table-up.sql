@@ -1,4 +1,4 @@
-CREATE TABLE orders(
+CREATE TABLE if not exists orders(
     id SERIAL PRIMARY KEY,
     user_id bigint,
     status VARCHAR(20),
