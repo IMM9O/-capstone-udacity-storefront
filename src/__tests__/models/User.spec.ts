@@ -27,11 +27,13 @@ describe('User Model', () => {
     const result = await store.create({
       firstname: 'Islam',
       lastname: 'Muhammad',
+      email: 'islam@mail.com',
       password: 'Password',
     });
     expect(result.id).toEqual(2);
     expect(result.firstname).toEqual('Islam');
     expect(result.lastname).toEqual('Muhammad');
+    expect(result.email).toEqual('islam@mail.com');
     expect(result.password).not.toEqual('Password');
   });
 
@@ -40,6 +42,7 @@ describe('User Model', () => {
     expect(result).toHaveSize(1);
     expect(result[0].firstname).toEqual('Islam');
     expect(result[0].lastname).toEqual('Muhammad');
+    expect(result[0].email).toEqual('islam@mail.com');
     expect(result[0].password).not.toEqual('Password');
   });
 
@@ -47,6 +50,7 @@ describe('User Model', () => {
     const result = await store.show(2);
     expect(result.firstname).toEqual('Islam');
     expect(result.lastname).toEqual('Muhammad');
+    expect(result.email).toEqual('islam@mail.com');
     expect(result.password).not.toEqual('Password');
   });
 

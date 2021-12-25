@@ -32,12 +32,14 @@ export const getUser = async (_req: Request, res: Response) => {
 export const createUser = async (_req: Request, res: Response) => {
   const firstname: string = _req.body.firstname;
   const lastname: string = _req.body.lastname;
+  const email: string = _req.body.email;
   const password: string = _req.body.password;
 
   try {
     const addedUser = await store.create({
       firstname,
       lastname,
+      email,
       password,
     });
 
@@ -61,12 +63,14 @@ export const updateUser = async (_req: Request, res: Response) => {
   const id: number = parseInt(_req.params.id);
   const firstname: string = _req.body.firstname;
   const lastname: string = _req.body.lastname;
+  const email: string = _req.body.email;
   const password: string = _req.body.password;
 
   try {
     const updatedUser = await store.update({
       firstname,
       lastname,
+      email,
       password,
       id,
     });

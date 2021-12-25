@@ -9,6 +9,7 @@ describe('Orders Model', () => {
     const result = await userStore.create({
       firstname: 'Islam',
       lastname: 'Muhammad',
+      email: 'islam@mail.com',
       password: 'Password',
     });
     expect(result.id).toEqual(1);
