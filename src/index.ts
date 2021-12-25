@@ -1,7 +1,7 @@
 import app from './server';
 
-const address = '0.0.0.0:3000';
+const PORT = process.env.PORT || 3001;
 
-app.listen(3000, function() {
-  console.log(`starting app on: ${address}`);
+app.listen(PORT, function() {
+  console.log(`Server listening on http://localhost:${PORT}/`);
 });
