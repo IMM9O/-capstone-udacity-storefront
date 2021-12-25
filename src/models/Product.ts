@@ -17,11 +17,12 @@ export class ProductStore {
     try {
       const conn = await Client.connect();
       const sql =
-        'INSERT INTO products (name, price, category) VALUES ($1, $2, $3) RETURNING *';
+        'INSERT INTO products (name, price, category, image_url) VALUES ($1, $2, $3, $4) RETURNING *';
       const result = await conn.query(sql, [
         p.name,
         p.price,
         p.category,
+        p.image_url
       ]);
 
       const product = result.rows[0];
@@ -47,11 +48,12 @@ export class ProductStore {
     try {
       const conn = await Client.connect();
       const sql =
-        'UPDATE products SET name=$1, price=$2, category=$3 WHERE id=$4 RETURNING *';
+        'UPDATE products SET name=$1, price=$2, category=$3, image_url=$4 WHERE id=$5 RETURNING *';
       const result = await conn.query(sql, [
         p.name,
         p.price,
         p.category,
+        p.image_url,
         p.id,
       ]);
       const product = result.rows[0];

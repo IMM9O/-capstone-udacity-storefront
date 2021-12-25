@@ -31,6 +31,7 @@ export const getProduct = async (_req: Request, res: Response) => {
 export const createProduct = async (_req: Request, res: Response) => {
   const name: string = _req.body.name;
   const category: string = _req.body.category;
+  const image_url: string = _req.body.image_url;
   const price: number = parseInt(_req.body.price);
 
   try {
@@ -38,6 +39,7 @@ export const createProduct = async (_req: Request, res: Response) => {
       name,
       price,
       category,
+      image_url,
     });
     res.json(addedProduct);
   } catch (err) {
@@ -50,6 +52,7 @@ export const createProduct = async (_req: Request, res: Response) => {
 export const updateProduct = async (_req: Request, res: Response) => {
   const id: number = parseInt(_req.params.id);
   const name: string = _req.body.name;
+  const image_url: string = _req.body.image_url;
   const price: number = parseInt(_req.body.price);
   const category: string = _req.body.category;
 
@@ -58,6 +61,7 @@ export const updateProduct = async (_req: Request, res: Response) => {
       id,
       name,
       category,
+      image_url,
       price,
     });
     res.json(updatedProduct);
