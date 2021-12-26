@@ -1,5 +1,7 @@
 # Storefront
 
+[![CircleCI](https://circleci.com/gh/IMM9O/udacity-storefront/tree/master.svg?style=svg)](http://storefront123.s3-website-us-east-1.amazonaws.com)
+
 It is a simple server side application provide APIs to manage, interact with online store using tech stack nodejs, postgres, and express.
 
 <p align="center">
