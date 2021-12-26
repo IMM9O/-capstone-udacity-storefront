@@ -1,1 +1,1 @@
-aws s3 cp --recursive --acl public-read ./client/build s3://storefront123/
+aws s3 cp --recursive ./client/build s3://storefront123/
