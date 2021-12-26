@@ -22,7 +22,7 @@
     "build": "run-s build:**",
     "build:server": "cd ./server && npm run build",
     "build:client": "cd ./client && npm run build",
-    "deploy": "cd bin && deploy.sh"
+    "deploy": "chmod +x bin/deploy.sh && bin/deploy.sh"
   },
   "repository": {
     "type": "git",
