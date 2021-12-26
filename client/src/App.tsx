@@ -1,6 +1,4 @@
-import { useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import logo from './assets/logo.png';
 import './App.css';
 import Home from './pages/Home';
 import Products from './pages/Products';
