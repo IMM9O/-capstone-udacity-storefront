@@ -6,7 +6,7 @@ function Products() {
   const [products, setProducts] = useState([]);
   useEffect(() => {
     const fetchProducts = async () => {
-      const response = await fetch('/api/products');
+      const response = await fetch(`${process.env.REACT_APP_API_SERVER}/api/products`);
       const products = await response.json();
       return products;
     };

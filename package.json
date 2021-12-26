@@ -8,17 +8,21 @@
   },
   "scripts": {
     "postinstall": "npm-s install:**",
-    "install:server": "cd ./server && npm start",
-    "install:client": "cd ./client && npm start",
-    "start": "run-s start:**",
+    "install:server": "cd ./server && npm i",
+    "install:client": "cd ./client && npm i",
+    "start": "run-p start:**",
     "start:server": "cd ./server && npm start",
     "start:client": "cd ./client && npm start",
+    "lint": "run-s lint:**",
+    "lint:server": "cd ./server && npm run lint",
+    "lint:client": "cd ./client && npm run lint",
+    "test": "run-s test:**",
+    "test:server": "cd ./server && npm run test",
+    "test:client": "cd ./client && npm run test",
     "build": "run-s build:**",
     "build:server": "cd ./server && npm run build",
     "build:client": "cd ./client && npm run build",
-    "test": "run-s test:**",
-    "test:server": "cd ./server && npm run test",
-    "test:client": "cd ./client && npm run test"
+    "deploy": "cd bin && deploy.sh"
   },
   "repository": {
     "type": "git",
