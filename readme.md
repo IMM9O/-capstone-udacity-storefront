@@ -11,7 +11,7 @@ Full stack app built with Postgres-Express-React-Nodejs Stack, hosted on [AWS](h
 </p>
 
 <p align="center">
-<img width="512" height="512" src="./docs/storefront-logo.png">
+<img width="512" height="512" src="./docs/assets/images/storefront-logo.png">
 </p>
 
 ## Tech stack
@@ -88,9 +88,9 @@ TOKEN_SECRET=
 
 ## Database
 
-Design and relationships ![Database Diagram](./docs/database.png 'Design and relationships')
+Design and relationships ![Database Diagram](./docs/assets/images/database.png 'Design and relationships')
 
-Migrations ![Database Migrations](./docs/migration-screenshot.png 'Migrations')
+Migrations ![Database Migrations](./docs/assets/images/migration-screenshot.png 'Migrations')
 
 ## APIs
 
