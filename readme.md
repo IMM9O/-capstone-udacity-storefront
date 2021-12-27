@@ -2,25 +2,41 @@
 
 [![CircleCI](https://circleci.com/gh/IMM9O/udacity-storefront/tree/master.svg?style=svg)](http://storefront123.s3-website-us-east-1.amazonaws.com)
 
-It is a simple server side application provide APIs to manage, interact with online store using tech stack nodejs, postgres, and express.
+[Link To Live Web](http://storefront123.s3-website-us-east-1.amazonaws.com)
+
+<p>
+
+Full stack app built with Postgres-Express-React-Nodejs Stack, hosted on [AWS](https://aws.amazon.com/), and use [CircleCI](https://circleci.com/) as CI/CD.
+
+</p>
 
 <p align="center">
-    <img width="512" height="512" src="./docs/storefront-logo.png">
+<img width="512" height="512" src="./docs/storefront-logo.png">
 </p>
 
 ## Tech stack
 
-- postgres
-- NodeJs
-- Typescript
-- ExpressJs
+- DB
+    - postgres
+- API
+    - NodeJs
+    - Typescript
+    - ExpressJs
+- UI
+    - ReactJs
+    - AntD
+- Hosted
+    - AWS
+- CI/CD
+    - CircleCI
 
 ## Installation
 
 ### Configuration
 
 **Database Port:** 5432
-**Server Port:** 3000
+**Server Port:** 3001
+**Client Port:** 3000
 
 ### Setup
 
@@ -63,7 +79,7 @@ TOKEN_SECRET=
 
 7. To start the app run `npm start`
 
-## Available Scripts
+## Available scripts on client and server code
 
 - To check app format run `npm run prettier`
 - To check app error run `npm run lint`
@@ -72,17 +88,11 @@ TOKEN_SECRET=
 
 ## Database
 
-### Design and relationships
+Design and relationships ![Database Diagram](./docs/database.png 'Design and relationships')
 
-![Database Diagram](./docs/database.png)
-
-### Migrations
-
-![Database Migrations](./docs/migration-screenshot.png)
+Migrations ![Database Migrations](./docs/migration-screenshot.png 'Migrations')
 
 ## APIs
-
-### Available APIs 
 
 See also [REQUIREMENTS](./REQUIREMENTS.md)
 
@@ -197,3 +207,5 @@ See also [REQUIREMENTS](./REQUIREMENTS.md)
         </tr>
     <tbody>
 </table>
+
+## UI
