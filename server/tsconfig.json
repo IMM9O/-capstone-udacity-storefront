@@ -1,14 +1,16 @@
 {
   "compilerOptions": {
-    "target": "ES5",
+    "target": "ES6",
     "module": "CommonJS",
     "lib": ["ES2018", "DOM"], 
-    "outDir": "./dist",
-    "sourceMap": true,
+    "outDir": "dist",
+    "sourceMap": false,
     "strict": true,
     "noImplicitAny": true,
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
   },
-  "exclude": ["node_modules", "./dist", "spec"]
+  "lib": ["es2015"],
+  "exclude": ["node_modules", "dist", "spec", "src/types", "src/__tests__"]
 }
