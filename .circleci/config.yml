@@ -29,7 +29,9 @@ jobs:
             npm run deploy
 workflows:
   version: 2.1
-  storefront:
+  Build_Storefront:
+    jobs:
+      - build
+  Deploy_Storefront:
     jobs:
       - deploy
-      - build
