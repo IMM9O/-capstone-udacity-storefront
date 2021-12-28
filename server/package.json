@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "install": "npm i",
     "start": "nodemon src/index.ts",
     "lint": "eslint . --ext .ts",
     "prettier": "prettier --config .prettierrc src/**/*.ts --write",

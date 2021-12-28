@@ -21,6 +21,7 @@
     "web-vitals": "^2.1.2"
   },
   "scripts": {
+    "install": "npm i",
     "start": "react-scripts start",
     "lint": "tsc --noEmit && eslint src/**/*.ts{,x}",
     "prettier": "prettier --config .prettierrc src/**/*.ts{,x} --write",
