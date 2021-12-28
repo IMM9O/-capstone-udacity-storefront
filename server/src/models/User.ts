@@ -90,21 +90,20 @@ export class UserStore {
     }
   }
   async authenticate(
-    id: number,
+    email: string,
     password: string,
   ): Promise<User | null> {
     try {
       const conn = await Client.connect();
-      const sql = 'SELECT * FROM users WHERE id=$1';
-      const result = await conn.query(sql, [id]);
+      const sql = 'SELECT * FROM users WHERE email=$1';
+      const result = await conn.query(sql, [email]);
 
-      if (result.rows.length) {
+      if (result?.rows?.length) {
         const user = result.rows[0];
         const validPassword = await bcrypt.compare(
-          password,
+          password + process.env.BCRYPT_PASSWORD,
           user.password,
         );
-        console.log({ validPassword });
 
         if (validPassword) {
           conn.release();

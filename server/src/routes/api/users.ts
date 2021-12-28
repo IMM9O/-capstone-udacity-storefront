@@ -15,7 +15,7 @@ const users = express.Router();
 users.get('/', [verifyAuthToken], getUsers);
 
 // post request [token required]
-users.post('/', createUser);
+users.post('/', [verifyAuthToken], createUser);
 
 // Show (get Request) [token required]
 users.get('/:id', [verifyAuthToken], getUser);
@@ -26,7 +26,7 @@ users.put('/:id', [verifyAuthToken], updateUser);
 // delete request [token required]
 users.delete('/:id', [verifyAuthToken], deleteUser);
 
-// auth user by id
-users.post('/:id/authenticate', authenticate);
+users.post('/signup', createUser);
+users.post('/login', authenticate);
 
 export default users;
