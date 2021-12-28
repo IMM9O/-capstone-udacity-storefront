@@ -28,8 +28,8 @@ jobs:
           command: |
             npm run deploy
 workflows:
-  version: 2
+  version: 2.1
   storefront:
     jobs:
-      - build
       - deploy
+      - build
