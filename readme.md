@@ -14,6 +14,18 @@ Full stack app built with Postgres-Express-React-Nodejs Stack, hosted on [AWS](h
 <img width="512" height="512" src="./docs/assets/images/storefront-logo.png">
 </p>
 
+## Table of content
+
+- [Infrastructure](./docs/Infrastructure.md)
+- [Pipeline](./docs/pipeline.md)
+- [Dependencies](./docs/dependencies.md)
+- [Project setup](#project-setup)
+- [Available scripts](#available-scripts)
+- Three tiers architecture 
+    - [Database](#database)
+    - [API](#api)
+    - [UI](#ui)
+
 ## Tech stack
 
 - DB
@@ -30,23 +42,19 @@ Full stack app built with Postgres-Express-React-Nodejs Stack, hosted on [AWS](h
 - CI/CD
     - CircleCI
 
-## Installation
+## Project setup
 
-### Configuration
+1. Clone the project `git clone https://github.com/IMM9O/udacity-storefront.git`
 
-**Database Port:** 5432
-**Server Port:** 3001
-**Client Port:** 3000
+2. Installation is done using the [npm install command](https://docs.npmjs.com/downloading-and-installing-packages-locally): `npm install`
 
-### Setup
+> **Note:** Install command will also install client&server dependencies
 
-1. Installation is done using the [npm install command](https://docs.npmjs.com/downloading-and-installing-packages-locally): `npm install`
+3. Open Sql Shell
 
-2. Open Sql Shell
+4. Connect to the default postgres database `psql -U postgres`
 
-3. Connect to the default postgres database `psql -U postgres`
-
-4. In psql run the following to create the dev and test database
+5. In psql run the following to create the dev and test database
 
 ```sql
 /** DEV database **/
@@ -57,10 +65,10 @@ CREATE DATABASE udacity_storefront_test;
 CREATE DATABASE udacity_storefront;
 ```
 
-5. Setup database `npm run db:up`
+6. Setup database `npm run db:up`
 
 
-6. Make a copy for `.env.example` file to `.env` file and then change the variables to match your environment
+7. Make a copy for `.env.example` file to `.env` and then change the variables to match your environment
 
 > Don't forget to replace {database_password} with your current postgres password
 
@@ -77,14 +85,17 @@ SALT_ROUNDS=
 TOKEN_SECRET=
 ```
 
-7. To start the app run `npm start`
+8. To start the app run `npm start`
 
-## Available scripts on client and server code
+9. **Database Port:** 5432, **Server Port:** 3001, **Client Port:** 3000
 
+## Available scripts
+
+- To start both frontend and backend app run `npm start` 
 - To check app format run `npm run prettier`
 - To check app error run `npm run lint`
-- To test the app run `npm run test`
-- To build the app run `npm run build`
+- To test both frontend and backend app run `npm run test`
+- To build both frontend and backend app run `npm run build`
 
 ## Database
 

@@ -1,9 +1,32 @@
 # AWS Configuration
 
+## RDS
+
+![RDS Screenshot](./assets/images/rds-screenshot.png)
 
 
 
-## Configure S3
+## Elastic Beanstalk
+
+![EBS Screenshot](./assets/images/ebs-screenshot.png)
+![EBS Screenshot](./assets/images/ebs-env-screenshot.png)
+#### Edge cases
+
+When deploying to Elastic Beanstalk running Node 8.x, node-gyp doesn't have sufficient permissions to write to the tmp directory. bcrypt won't install and the application deployment will fail.
+
+A workaround is to add a .npmrc file to the root of your project that will force node-gyp to run as root and allow the installation to complete. 
+File contents for .npmrc:
+
+```bash
+# Force npm to run node-gyp also as root, preventing permission denied errors in AWS with npm@5 or @6
+unsafe-perm=true
+```
+
+## S3
+
+![S3 Screenshot](./assets/images/s3-screenshot.png)
+
+#### Steps 
 
 1. Create Bucket first through this [link](https://s3.console.aws.amazon.com/s3/home)
 2. Add this rule `Bucket policy` 
