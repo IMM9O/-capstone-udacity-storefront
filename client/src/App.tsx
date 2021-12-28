@@ -6,7 +6,6 @@ import About from './pages/About';
 import Orders from './pages/Orders';
 
 function App() {
-
   return (
     <BrowserRouter>
       <Routes>

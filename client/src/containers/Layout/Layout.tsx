@@ -14,7 +14,11 @@ import './Layout.css';
 
 const { Header, Sider, Content } = Layout;
 
-function AppLayout(props: any): JSX.Element {
+type Props = {
+  children: JSX.Element | JSX.Element[];
+};
+
+function AppLayout(props: Props): JSX.Element {
   const [collapsed, setCollapsed] = useState(false);
 
   return (
@@ -50,16 +54,16 @@ function AppLayout(props: any): JSX.Element {
           {collapsed ? (
             <MenuUnfoldOutlined
               className="trigger"
-              onClick={() => setCollapsed(r => !r)}
+              onClick={() => setCollapsed((r) => !r)}
             />
           ) : (
             <MenuFoldOutlined
               className="trigger"
-              onClick={() => setCollapsed(r => !r)}
+              onClick={() => setCollapsed((r) => !r)}
             />
           )}
 
-          <h1 className='header'>Udacity Storefront</h1>
+          <h1 className="header">Udacity Storefront</h1>
         </Header>
         <Content
           className="site-layout-background"

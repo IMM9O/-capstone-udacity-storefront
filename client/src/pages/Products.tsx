@@ -6,11 +6,13 @@ function Products() {
   const [products, setProducts] = useState([]);
   useEffect(() => {
     const fetchProducts = async () => {
-      const response = await fetch(`${process.env.REACT_APP_API_SERVER}/api/products`);
-      const products = await response.json();
-      return products;
+      const response = await fetch(
+        `${process.env.REACT_APP_API_SERVER}/api/products`,
+      );
+      const res = await response.json();
+      return res;
     };
-    fetchProducts().then(res => setProducts(res));
+    fetchProducts().then((res) => setProducts(res));
   }, []);
   return (
     <AppLayout>

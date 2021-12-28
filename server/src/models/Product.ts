@@ -22,7 +22,7 @@ export class ProductStore {
         p.name,
         p.price,
         p.category,
-        p.image_url
+        p.image_url,
       ]);
 
       const product = result.rows[0];
