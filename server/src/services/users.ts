@@ -51,7 +51,7 @@ export const createUser = async (_req: Request, res: Response) => {
       process.env.TOKEN_SECRET as string,
     );
 
-    res.json(token);
+    res.json({ token });
   } catch (err) {
     res.status(400);
     res.json(err);
@@ -113,7 +113,7 @@ export const authenticate = async (_req: Request, res: Response) => {
           process.env.TOKEN_SECRET as string,
         );
 
-        res.json(token);
+        res.json({ token });
       } else {
         res.status(404);
         res.json({ error: 'Wrong username or password' });
