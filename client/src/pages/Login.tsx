@@ -1,15 +1,16 @@
 import { Form, Input, Button, Spin } from 'antd';
 
 import AppLayout from '../containers/Layout/Layout';
-import { Status, useToken } from '../hooks/useToken';
+import { useAuth } from '../hooks/useAuth';
+import { Status } from '../hooks/useProvideAuth';
 import { User } from '../types/User';
 
 export default function Login() {
-  const { status, onSubmit } = useToken('login');
+  const auth = useAuth();
 
   const onFinish = (values: User) => {
     console.log('Success:', values);
-    onSubmit(values);
+    auth.signin(values);
   };
 
   const onFinishFailed = (errorInfo: any) => {
@@ -56,7 +57,7 @@ export default function Login() {
 
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
           <Button type="primary" htmlType="submit">
-            {status === Status.FETCH && <Spin />} Submit
+            {auth.status === Status.FETCH && <Spin />} Submit
           </Button>
         </Form.Item>
       </Form>

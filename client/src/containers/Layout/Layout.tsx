@@ -29,20 +29,20 @@ function AppLayout(props: Props): JSX.Element {
           <Menu.Item key="1" icon={<HomeFilled />}>
             <Link to="/">Home</Link>
           </Menu.Item>
-          <Menu.Item key="2" icon={<UserOutlined />}>
-            <Link to="/products">Products</Link>
-          </Menu.Item>
-          <Menu.Item key="3" icon={<VideoCameraOutlined />}>
-            <Link to="/orders">Orders</Link>
-          </Menu.Item>
-          <Menu.Item key="4" icon={<VideoCameraOutlined />}>
+          <Menu.Item key="2" icon={<VideoCameraOutlined />}>
             <Link to="/about">About</Link>
           </Menu.Item>
-          <Menu.Item key="5" icon={<UploadOutlined />}>
+          <Menu.Item key="3" icon={<UploadOutlined />}>
+            <Link to="/login">Login</Link>
+          </Menu.Item>
+          <Menu.Item key="4" icon={<UploadOutlined />}>
             <Link to="/signup">Signup</Link>
           </Menu.Item>
-          <Menu.Item key="6" icon={<UploadOutlined />}>
-            <Link to="/login">Login</Link>
+          <Menu.Item key="5" icon={<UserOutlined />}>
+            <Link to="/products">Products</Link>
+          </Menu.Item>
+          <Menu.Item key="6" icon={<VideoCameraOutlined />}>
+            <Link to="/orders">Orders</Link>
           </Menu.Item>
         </Menu>
       </Sider>
