@@ -57,7 +57,7 @@ function AppLayout(props: Props): JSX.Element {
           <Menu.Item key="6" icon={<UserOutlined />}>
             <Link to="/products">Products</Link>
           </Menu.Item>
-          {isAuth ? (
+          {/* {isAuth ? (
             <>
               <Menu.Item key="7" icon={<VideoCameraOutlined />}>
                 <Link to="/orders">Orders</Link>
@@ -65,7 +65,7 @@ function AppLayout(props: Props): JSX.Element {
             </>
           ) : (
             <></>
-          )}
+          )} */}
         </Menu>
       </Sider>
       <Layout className="site-layout">
