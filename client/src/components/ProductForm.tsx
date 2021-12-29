@@ -31,10 +31,6 @@ function ProductForm(props: Props) {
     productRequest(p).then(() => props.onProductAdd());
   };
 
-  const onFinishFailed = (errorInfo: any) => {
-    console.log('Failed:', errorInfo);
-  };
-
   return (
     <Form
       name="basic"
@@ -42,7 +38,6 @@ function ProductForm(props: Props) {
       wrapperCol={{ span: 16 }}
       initialValues={{ remember: true }}
       onFinish={addProduct}
-      onFinishFailed={onFinishFailed}
       autoComplete="off"
     >
       <Form.Item

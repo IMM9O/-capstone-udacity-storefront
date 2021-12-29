@@ -14,10 +14,6 @@ export default function Signup() {
     auth.signup(values);
   };
 
-  const onFinishFailed = (errorInfo: any) => {
-    console.log('Failed:', errorInfo);
-  };
-
   return (
     <AppLayout>
       <h1>Register Form</h1>
@@ -27,7 +23,6 @@ export default function Signup() {
         wrapperCol={{ span: 16 }}
         initialValues={{ remember: true }}
         onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
         autoComplete="off"
       >
         <Form.Item

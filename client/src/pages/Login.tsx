@@ -13,10 +13,6 @@ export default function Login() {
     auth.signin(values);
   };
 
-  const onFinishFailed = (errorInfo: any) => {
-    console.log('Failed:', errorInfo);
-  };
-
   return (
     <AppLayout>
       <h1>Login Page</h1>
@@ -26,7 +22,6 @@ export default function Login() {
         wrapperCol={{ span: 16 }}
         initialValues={{ remember: true }}
         onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
         autoComplete="off"
       >
         <Form.Item
