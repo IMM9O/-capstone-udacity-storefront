@@ -8,8 +8,8 @@
   },
   "scripts": {
     "postinstall": "run-s install:**",
-    "install:server": "cd ./server && npm run install",
-    "install:client": "cd ./client && npm run install",
+    "install:server": "cd ./server && npm i",
+    "install:client": "cd ./client && npm i",
     "start": "run-p start:**",
     "start:server": "cd ./server && npm start",
     "start:client": "cd ./client && npm start",
