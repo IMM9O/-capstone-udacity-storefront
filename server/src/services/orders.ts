@@ -14,7 +14,7 @@ export const getOrders = async (_req: Request, res: Response) => {
     res.json(orders);
   } catch (err) {
     res.status(400);
-    res.json(err);
+    res.json({ err });
   }
 };
 
@@ -29,7 +29,7 @@ export const getCompletedOrders = async (
     res.json(orders);
   } catch (err) {
     res.status(400);
-    res.json(err);
+    res.json({ err });
   }
 };
 
@@ -44,7 +44,7 @@ export const getActiveOrders = async (
     res.json(orders);
   } catch (err) {
     res.status(400);
-    res.json(err);
+    res.json({ err });
   }
 };
 
@@ -56,7 +56,7 @@ export const getOrder = async (_req: Request, res: Response) => {
     res.json(order);
   } catch (err) {
     res.status(400);
-    res.json(err);
+    res.json({ err });
   }
 };
 
@@ -74,7 +74,7 @@ export const addOrder = async (_req: Request, res: Response) => {
     res.json(addedOrder);
   } catch (err) {
     res.status(400);
-    res.json(err);
+    res.json({ err });
   }
 };
 
@@ -94,7 +94,7 @@ export const updateOrder = async (_req: Request, res: Response) => {
     res.json(updatedOrder);
   } catch (err) {
     res.status(400);
-    res.json(err);
+    res.json({ err });
   }
 };
 
@@ -106,7 +106,7 @@ export const deleteOrder = async (_req: Request, res: Response) => {
     res.json(order);
   } catch (err) {
     res.status(400);
-    res.json(err);
+    res.json({ err });
   }
 };
 
@@ -123,7 +123,7 @@ export const addProduct = async (_req: Request, res: Response) => {
     res.json(products);
   } catch (err) {
     res.status(400);
-    res.json(err);
+    res.json({ err });
   }
 };
 
@@ -137,6 +137,6 @@ export const getOrderProducts = async (
     res.json(products);
   } catch (err) {
     res.status(400);
-    res.json(err);
+    res.json({ err });
   }
 };

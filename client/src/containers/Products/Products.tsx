@@ -1,4 +1,4 @@
-import ProductCard from '../../components/Product';
+import ProductCard from '../../components/ProductCard';
 import { Product } from '../../types/Product';
 
 import './Products.css';

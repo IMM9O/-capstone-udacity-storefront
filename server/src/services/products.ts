@@ -11,7 +11,7 @@ export const getProducts = async (_req: Request, res: Response) => {
     res.json(products);
   } catch (err) {
     res.status(400);
-    res.json(err);
+    res.json({ err });
   }
 };
 
@@ -23,7 +23,7 @@ export const getProduct = async (_req: Request, res: Response) => {
     res.json(product);
   } catch (err) {
     res.status(400);
-    res.json(err);
+    res.json({ err });
   }
 };
 
@@ -44,7 +44,7 @@ export const createProduct = async (_req: Request, res: Response) => {
     res.json(addedProduct);
   } catch (err) {
     res.status(400);
-    res.json(err);
+    res.json({ err });
   }
 };
 
@@ -67,7 +67,7 @@ export const updateProduct = async (_req: Request, res: Response) => {
     res.json(updatedProduct);
   } catch (err) {
     res.status(400);
-    res.json(err);
+    res.json({ err });
   }
 };
 
@@ -79,6 +79,6 @@ export const deleteProduct = async (_req: Request, res: Response) => {
     res.json(product);
   } catch (err) {
     res.status(400);
-    res.json(err);
+    res.json({ err });
   }
 };

@@ -8,6 +8,7 @@ export type AuthContextType = {
   signin: (user: User) => void;
   signup: (user: User) => void;
   sigout: () => void;
+  isAuth: boolean;
 };
 
 export const AuthContextDefaultValues: AuthContextType = {
@@ -17,4 +18,5 @@ export const AuthContextDefaultValues: AuthContextType = {
   signin: ({}) => {},
   signup: ({}) => {},
   sigout: () => {},
+  isAuth: false,
 };

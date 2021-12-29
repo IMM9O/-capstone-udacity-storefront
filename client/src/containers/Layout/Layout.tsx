@@ -11,6 +11,7 @@ import {
   HomeFilled,
 } from '@ant-design/icons';
 import './Layout.css';
+import { useAuth } from '../../hooks/useAuth';
 
 const { Header, Sider, Content } = Layout;
 
@@ -20,6 +21,7 @@ type Props = {
 
 function AppLayout(props: Props): JSX.Element {
   const [collapsed, setCollapsed] = useState(false);
+  const { isAuth, sigout } = useAuth();
 
   return (
     <Layout className="app-layout">
@@ -32,18 +34,38 @@ function AppLayout(props: Props): JSX.Element {
           <Menu.Item key="2" icon={<VideoCameraOutlined />}>
             <Link to="/about">About</Link>
           </Menu.Item>
-          <Menu.Item key="3" icon={<UploadOutlined />}>
-            <Link to="/login">Login</Link>
-          </Menu.Item>
-          <Menu.Item key="4" icon={<UploadOutlined />}>
-            <Link to="/signup">Signup</Link>
-          </Menu.Item>
-          <Menu.Item key="5" icon={<UserOutlined />}>
+          {isAuth ? (
+            <>
+              <Menu.Item
+                key="3"
+                icon={<UploadOutlined />}
+                onClick={() => sigout()}
+              >
+                Logout
+              </Menu.Item>
+            </>
+          ) : (
+            <>
+              <Menu.Item key="4" icon={<UploadOutlined />}>
+                <Link to="/login">Login</Link>
+              </Menu.Item>
+              <Menu.Item key="5" icon={<UploadOutlined />}>
+                <Link to="/signup">Signup</Link>
+              </Menu.Item>
+            </>
+          )}
+          <Menu.Item key="6" icon={<UserOutlined />}>
             <Link to="/products">Products</Link>
           </Menu.Item>
-          <Menu.Item key="6" icon={<VideoCameraOutlined />}>
-            <Link to="/orders">Orders</Link>
-          </Menu.Item>
+          {isAuth ? (
+            <>
+              <Menu.Item key="7" icon={<VideoCameraOutlined />}>
+                <Link to="/orders">Orders</Link>
+              </Menu.Item>
+            </>
+          ) : (
+            <></>
+          )}
         </Menu>
       </Sider>
       <Layout className="site-layout">

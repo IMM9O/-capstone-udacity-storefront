@@ -55,7 +55,7 @@ export const useProvideAuth = () => {
 
   const signup = (cre: User) => {
     setStatus(Status.FETCH);
-    userRequest(AuthType.LOGIN, cre)
+    userRequest(AuthType.SIGNUP, cre)
       .then((res) => {
         setUser(cre);
         setToken(res.token);
@@ -70,7 +70,10 @@ export const useProvideAuth = () => {
 
   const sigout = () => {
     setUser({});
+    setToken('');
   };
+
+  const isAuth = !!token;
 
   return {
     status,
@@ -79,5 +82,6 @@ export const useProvideAuth = () => {
     signin,
     signup,
     sigout,
+    isAuth,
   };
 };

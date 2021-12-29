@@ -12,7 +12,7 @@ export const getUsers = async (_req: Request, res: Response) => {
     res.json(users);
   } catch (err) {
     res.status(400);
-    res.json(err);
+    res.json({ err });
   }
 };
 
@@ -24,7 +24,7 @@ export const getUser = async (_req: Request, res: Response) => {
     res.json(product);
   } catch (err) {
     res.status(400);
-    res.json(err);
+    res.json({ err });
   }
 };
 
@@ -54,7 +54,7 @@ export const createUser = async (_req: Request, res: Response) => {
     res.json({ token });
   } catch (err) {
     res.status(400);
-    res.json(err);
+    res.json({ err });
   }
 };
 
@@ -77,7 +77,7 @@ export const updateUser = async (_req: Request, res: Response) => {
     res.json(updatedUser);
   } catch (err) {
     res.status(400);
-    res.json(err);
+    res.json({ err });
   }
 };
 
@@ -89,7 +89,7 @@ export const deleteUser = async (_req: Request, res: Response) => {
     res.json(product);
   } catch (err) {
     res.status(400);
-    res.json(err);
+    res.json({ err });
   }
 };
 
@@ -120,7 +120,7 @@ export const authenticate = async (_req: Request, res: Response) => {
       }
     } catch (err) {
       res.status(400);
-      res.json(err);
+      res.json({ err });
     }
   }
 };

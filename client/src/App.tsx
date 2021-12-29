@@ -28,7 +28,7 @@ function App() {
             <Route path="/login" element={<Login />} />
           </Route>
           <Route path="/signup" element={<ProtectedOutlet />}>
-            <Route path="/signup" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
           </Route>
           <Route path="/products" element={<Products />} />
           <Route path="/orders" element={<PrivateOutlet />}>

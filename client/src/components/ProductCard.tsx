@@ -11,8 +11,19 @@ function Product(props: Props): JSX.Element {
   return (
     <Card
       hoverable
-      style={{ width: 240 }}
-      cover={<img alt={props.name} src={props.image_url} />}
+      style={{
+        width: 240,
+        border: '1px solid',
+        padding: '5px',
+      }}
+      cover={
+        <img
+          alt={props.name}
+          src={props.image_url}
+          height={200}
+          style={{ objectFit: 'cover' }}
+        />
+      }
     >
       <Meta title={props.name} description={props.price} />
     </Card>
