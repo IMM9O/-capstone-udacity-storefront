@@ -28,7 +28,7 @@ function ProductForm(props: Props) {
     return res;
   };
   const addProduct = (p: Product) => {
-    productRequest(p).then((res) => props.onProductAdd());
+    productRequest(p).then(() => props.onProductAdd());
   };
 
   const onFinishFailed = (errorInfo: any) => {
@@ -46,7 +46,7 @@ function ProductForm(props: Props) {
       autoComplete="off"
     >
       <Form.Item
-        label="Product Name"
+        label="Name"
         name="name"
         rules={[
           {
@@ -58,7 +58,7 @@ function ProductForm(props: Props) {
         <Input />
       </Form.Item>
       <Form.Item
-        label="Product Price"
+        label="Price"
         name="price"
         rules={[
           {
@@ -82,7 +82,7 @@ function ProductForm(props: Props) {
         <Input />
       </Form.Item>
       <Form.Item
-        label="Image URL"
+        label="Image"
         name="image_url"
         rules={[
           {

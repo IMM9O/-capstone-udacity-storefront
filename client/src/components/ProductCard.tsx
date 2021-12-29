@@ -18,6 +18,7 @@ function Product(props: Props): JSX.Element {
       }}
       cover={
         <img
+          data-testid="image"
           alt={props.name}
           src={props.image_url}
           height={200}

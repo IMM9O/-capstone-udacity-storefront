@@ -20,13 +20,15 @@
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
-        "jsx": true
+      "jsx": true
     },
     "project": "tsconfig.json",
     "sourceType": "module"
   },
   "rules": {
     "linebreak-style": "off",
+    "jest/no-disabled-tests": "off",
+    "jest/no-test-prefixes": "off",
     "prettier/prettier": [
       "error",
       {
