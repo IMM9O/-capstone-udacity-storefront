@@ -10,7 +10,7 @@
     "jasmine": "jasmine-ts",
     "test": "cross-env NODE_ENV=test db-migrate reset --env test && db-migrate up --env test && npm run jasmine",
     "test:windows": "set NODE_ENV=test& db-migrate reset --env test && db-migrate up --env test && npm run jasmine",
-    "build": "npx tsc && cp package.json dist/",
+    "build": "npx tsc",
     "db:up": "db-migrate up",
     "db:down": "db-migrate reset"
   },
