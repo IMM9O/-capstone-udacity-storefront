@@ -8,8 +8,6 @@ executors:
     docker:
       - image: 'cimg/base:stable'
     steps:
-      - run: mkdir -p workspace
-      - run: cd workspace
       - checkout
       - aws-cli/setup
       - eb/setup
@@ -49,7 +47,7 @@ executors:
     executor: base-executor
     steps:
       - attach_workspace:
-        at: /tmp/workspace
+          at: ~/
       - run:
           name: Test FrontEnd Application
           command: |
@@ -58,7 +56,7 @@ executors:
     executor: base-executor
     steps:
       - attach_workspace:
-          at: /tmp/workspace
+          at: ~/
       - run:
           name: Build BackEnd
           command: |
@@ -71,7 +69,7 @@ executors:
     executor: base-executor
     steps:
       - attach_workspace:
-          at: /tmp/workspace
+          at: ~/
       - aws-cli/setup
       - run:
           name: Deploy FrontEnd App
