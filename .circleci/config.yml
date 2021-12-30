@@ -38,6 +38,7 @@ jobs:
             branches:
               only:
                 - main
+                - master
       - run:
           name: Build FrontEnd
           command: |
@@ -46,6 +47,7 @@ jobs:
             branches:
               only:
                 - main
+                - master
       - run:
           name: Deploy FrontEnd App
           command: |
@@ -54,3 +56,4 @@ jobs:
             branches:
               only:
                 - main
+                - master
