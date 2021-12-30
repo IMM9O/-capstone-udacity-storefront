@@ -64,6 +64,7 @@ executors:
   Deploy:
     executor: base-executor
     steps:
+      - aws-cli/setup
       - run:
           name: Deploy FrontEnd App
           command: |
