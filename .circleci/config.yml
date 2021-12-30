@@ -6,14 +6,12 @@ executors:
   base-executor:
     docker:
       - image: 'cimg/base:stable'
-    steps:
-      - checkout
-      - node/install
-      - aws-cli/setup
 jobs:
   Install:
     executor: base-executor
     steps:
+      - checkout
+      - node/install
       - run:
           name: Install FrontEnd Dependencies
           command: |
@@ -54,6 +52,7 @@ jobs:
   Deploy:
     executor: base-executor
     steps:
+      - aws-cli/setup
       - run:
           name: Deploy FrontEnd App
           command: |
