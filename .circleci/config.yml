@@ -47,7 +47,7 @@ executors:
     executor: base-executor
     steps:
       - attach_workspace:
-          at: /temp/workspace
+          at: /temp
       - run:
           name: Test FrontEnd Application
           command: |
@@ -56,7 +56,7 @@ executors:
     executor: base-executor
     steps:
       - attach_workspace:
-          at: /temp/workspace
+          at: /temp
       - run:
           name: Build BackEnd
           command: |
@@ -69,7 +69,7 @@ executors:
     executor: base-executor
     steps:
       - attach_workspace:
-          at: /temp/workspace
+          at: /temp
       - aws-cli/setup
       - run:
           name: Deploy FrontEnd App
