@@ -6,13 +6,11 @@ executors:
   base-executor:
     docker:
       - image: cimg/node:17.3.0
-    working_directory: /tmp
+    working_directory: ~/
 jobs:
   Install:
     executor: base-executor
     steps:
-      - run: mkdir -p workspace
-      - run: cd workspace
       - checkout
       - run:
           name: Install FrontEnd Dependencies
@@ -23,12 +21,14 @@ jobs:
           command: |
             npm run install:server
       - persist_to_workspace:
-          root: workspace
+          root: ~/
+          paths:
+            - .
   Lint:
     executor: base-executor
     steps:
       - attach_workspace:
-          at: /tmp/workspace
+          at: ~/
       - run:
           name: Lint FrontEnd Application
           command: |
@@ -41,7 +41,7 @@ jobs:
     executor: base-executor
     steps:
       - attach_workspace:
-        at: /tmp/workspace
+          at: ~/
       - run:
           name: Test FrontEnd Application
           command: |
@@ -50,7 +50,7 @@ jobs:
     executor: base-executor
     steps:
       - attach_workspace:
-          at: /tmp/workspace
+          at: ~/
       - run:
           name: Build BackEnd
           command: |
@@ -63,7 +63,7 @@ jobs:
     executor: base-executor
     steps:
       - attach_workspace:
-          at: /tmp/workspace
+          at: ~/
       - aws-cli/setup
       - run:
           name: Deploy FrontEnd App
