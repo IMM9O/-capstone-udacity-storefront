@@ -5,13 +5,12 @@ orbs:
 executors:
   base-executor:
     docker:
-      - image: 'cimg/base:stable'
+      - image: cimg/node:17.3.0
 jobs:
   Install:
     executor: base-executor
     steps:
       - checkout
-      - node/install
       - run:
           name: Install FrontEnd Dependencies
           command: |
