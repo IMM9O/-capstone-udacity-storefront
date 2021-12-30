@@ -19,6 +19,14 @@ jobs:
           command: |
             npm run install:server
       - run:
+          name: Lint FrontEnd Application
+          command: |
+            npm run lint:client
+      - run:
+          name: Lint Backend Application
+          command: |
+            npm run lint:server
+      - run:
           name: Test FrontEnd Application
           command: |
             npm run test:client
@@ -26,11 +34,23 @@ jobs:
           name: Build BackEnd
           command: |
             npm run build:server
+          filters:
+            branches:
+              only:
+                - main
       - run:
           name: Build FrontEnd
           command: |
             npm run build:client
+          filters:
+            branches:
+              only:
+                - main
       - run:
           name: Deploy FrontEnd App
           command: |
             npm run deploy
+          filters:
+            branches:
+              only:
+                - main
