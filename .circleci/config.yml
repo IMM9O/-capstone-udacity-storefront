@@ -3,13 +3,12 @@ orbs:
   node: circleci/node@5.0.0
   aws-cli: circleci/aws-cli@1.3.1
 jobs:
-  build:
+  Install:
     docker:
       - image: 'cimg/base:stable'
     steps:
-      - node/install
       - checkout
-      - aws-cli/setup
+      - node/install
       - run:
           name: Install FrontEnd Dependencies
           command: |
@@ -18,6 +17,10 @@ jobs:
           name: Install BackEnd Dependencies
           command: |
             npm run install:server
+  Lint:
+    docker:
+      - image: 'cimg/base:stable'
+    steps:
       - run:
           name: Lint FrontEnd Application
           command: |
@@ -26,32 +29,63 @@ jobs:
           name: Lint Backend Application
           command: |
             npm run lint:server
+  Test:
+    docker:
+      - image: 'cimg/base:stable'
+    steps:
       - run:
           name: Test FrontEnd Application
           command: |
             npm run test:client
+  Build:
+    docker:
+      - image: 'cimg/base:stable'
+    steps:
       - run:
           name: Build BackEnd
           command: |
             npm run build:server
-          filters:
-            branches:
-              only:
-                - main
-                - master
       - run:
           name: Build FrontEnd
           command: |
             npm run build:client
+  Deploy:
+    docker:
+      - image: 'cimg/base:stable'
+    steps:
+      - aws-cli/setup
+      - run:
+          name: Deploy FrontEnd App
+          command: |
+            npm run deploy
+
+workflows:
+  Storefront:
+    jobs:
+      - Install
+      - Lint:
+          requires:
+            - Install
+      - Test:
+          requires:
+            - Install
+            - Lint
+      - Build:
+          requires:
+            - Install
+            - Lint
+            - Test
           filters:
             branches:
               only:
                 - main
                 - master
-      - run:
-          name: Deploy FrontEnd App
-          command: |
-            npm run deploy
+      - Deploy:
+          requires:
+            - Install
+            - Lint
+            - Test
+            - Build
           filters:
             branches:
               only:
