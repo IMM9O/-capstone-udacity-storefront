@@ -20,15 +20,11 @@ jobs:
           name: Install BackEnd Dependencies
           command: |
             npm run install:server
-      - persist_to_workspace:
-          root: workspace
-          paths:
-            - .
   Lint:
     executor: base-executor
     steps:
       - attach_workspace:
-          at: /temp/workspace
+          at: /temp
       - run:
           name: Lint FrontEnd Application
           command: |
@@ -41,7 +37,7 @@ jobs:
     executor: base-executor
     steps:
       - attach_workspace:
-          at: /temp/workspace
+          at: /temp
       - run:
           name: Test FrontEnd Application
           command: |
@@ -50,7 +46,7 @@ jobs:
     executor: base-executor
     steps:
       - attach_workspace:
-          at: /temp/workspace
+          at: /temp
       - run:
           name: Build BackEnd
           command: |
@@ -63,7 +59,7 @@ jobs:
     executor: base-executor
     steps:
       - attach_workspace:
-          at: /temp/workspace
+          at: /temp
       - aws-cli/setup
       - run:
           name: Deploy FrontEnd App
