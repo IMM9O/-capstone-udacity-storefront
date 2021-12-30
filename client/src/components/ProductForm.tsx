@@ -1,9 +1,16 @@
-import { Form, Input, Button } from 'antd';
+import { Form, Input, Button, notification } from 'antd';
 import { Product } from '../types/Product';
 
 type Props = {
   onProductAdd: () => void;
   token: string;
+};
+
+const openNotification = (message: string) => {
+  notification.open({
+    message: 'Something went wrong!',
+    description: message,
+  });
 };
 
 function ProductForm(props: Props) {
@@ -28,7 +35,17 @@ function ProductForm(props: Props) {
     return res;
   };
   const addProduct = (p: Product) => {
-    productRequest(p).then(() => props.onProductAdd());
+    productRequest(p)
+      .then((res) => {
+        if (res.err) {
+          openNotification(res.err);
+        } else {
+          props.onProductAdd();
+        }
+      })
+      .catch((err) => {
+        openNotification(err.err);
+      });
   };
 
   return (

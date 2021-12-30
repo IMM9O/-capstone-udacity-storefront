@@ -1,4 +1,4 @@
-import { Button, Modal } from 'antd';
+import { Button, Modal, notification } from 'antd';
 import { useEffect, useState } from 'react';
 import ProductForm from '../components/ProductForm';
 import AppLayout from '../containers/Layout/Layout';
@@ -16,6 +16,16 @@ function Products() {
   const showModal = () => {
     setIsModalVisible(true);
   };
+  const closeModal = () => {
+    setIsModalVisible(false);
+  };
+
+  const openNotification = (message: string) => {
+    notification.open({
+      message: 'Something went wrong!',
+      description: message,
+    });
+  };
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -25,7 +35,11 @@ function Products() {
       const res = await response.json();
       return res;
     };
-    fetchProducts().then((res) => setProducts(res));
+    fetchProducts()
+      .then((res) => setProducts(res))
+      .catch((err) => {
+        openNotification(err.err);
+      });
   }, [updateProduct]);
 
   return (
@@ -40,6 +54,7 @@ function Products() {
           <Modal
             title="Add New Product"
             visible={isModalVisible}
+            onCancel={closeModal}
             footer={null}
           >
             <ProductForm

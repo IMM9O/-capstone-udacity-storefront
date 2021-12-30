@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { notification } from 'antd';
+
 import { User } from '../types/User';
 
 export enum Status {
@@ -16,6 +18,13 @@ export const useProvideAuth = () => {
   const [status, setStatus] = useState(() => Status.IDLE);
   const [user, setUser] = useState({});
   const [token, setToken] = useState('');
+
+  const openNotification = (message: string) => {
+    notification.open({
+      message: 'Something went wrong!',
+      description: message,
+    });
+  };
 
   const userRequest = async (type: AuthType, cre: User) => {
     const response = await fetch(
@@ -42,14 +51,22 @@ export const useProvideAuth = () => {
     setStatus(Status.FETCH);
     userRequest(AuthType.LOGIN, cre)
       .then((res) => {
-        setUser(cre);
-        setToken(res.token);
-        setStatus(Status.OK);
+        if (res.error) {
+          setUser({});
+          setToken('');
+          setStatus(Status.ERROR);
+          openNotification(res.error);
+        } else {
+          setUser(cre);
+          setToken(res.token);
+          setStatus(Status.OK);
+        }
       })
-      .catch(() => {
+      .catch((err) => {
         setUser({});
         setToken('');
         setStatus(Status.ERROR);
+        openNotification(err.err);
       });
   };
 
@@ -57,14 +74,22 @@ export const useProvideAuth = () => {
     setStatus(Status.FETCH);
     userRequest(AuthType.SIGNUP, cre)
       .then((res) => {
-        setUser(cre);
-        setToken(res.token);
-        setStatus(Status.OK);
+        if (res.error) {
+          setUser({});
+          setToken('');
+          setStatus(Status.ERROR);
+          openNotification(res.err);
+        } else {
+          setUser(cre);
+          setToken(res.token);
+          setStatus(Status.OK);
+        }
       })
-      .catch(() => {
+      .catch((err) => {
         setUser({});
         setToken('');
         setStatus(Status.ERROR);
+        openNotification(err.err);
       });
   };
 
