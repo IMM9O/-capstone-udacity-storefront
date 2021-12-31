@@ -44,17 +44,19 @@ Full stack app built with Postgres-Express-React-Nodejs Stack, hosted on [AWS](h
 
 ## Project setup
 
-1. Clone the project `git clone https://github.com/IMM9O/udacity-storefront.git`
+1. Clone the project `git clone https://github.com/IMM9O/udacity-storefront.git`.
 
-2. Installation is done using the [npm install command](https://docs.npmjs.com/downloading-and-installing-packages-locally): `npm install`
+2. Installation is done using the [npm install command](https://docs.npmjs.com/downloading-and-installing-packages-locally): `npm install`.
 
 > **Note:** Install command will also install client&server dependencies
 
-3. Open Sql Shell
+3. Install postgres on your local machine from this [link](https://www.postgresql.org/download/).
 
-4. Connect to the default postgres database `psql -U postgres`
+4. Open `Sql Shell` (psql).
 
-5. In psql run the following to create the dev and test database
+5. Connect to the default postgres database user `psql -U postgres`.
+
+6. In `psql` run the following to create the dev, test, and production databases.
 
 ```sql
 /** DEV database **/
@@ -65,10 +67,10 @@ CREATE DATABASE udacity_storefront_test;
 CREATE DATABASE udacity_storefront;
 ```
 
-6. Setup database `npm run db:up`
+7. Setup database `npm run db:up`.
 
 
-7. Make a copy for `.env.example` file to `.env` and then change the variables to match your environment
+8. Make a copy for `.env.example` file to `.env` and then change the variables to match your environment.
 
 > Don't forget to replace {database_password} with your current postgres password
 
@@ -85,12 +87,14 @@ SALT_ROUNDS=
 TOKEN_SECRET=
 ```
 
-8. To start the app run `npm start`
+9. To start the app run `npm start`.
+
+> **Note:** This command will start both app the client and the server
 
 
-| **Database Port** | **Server Port** |   **Client Port** |
-|   :----:          |    :----:       |    :-------:      |
-| 5432              | 3001            | 3000              |
+| **Database Port** | **Server Port** | **Client Port** |
+|      :----:       |      :----:     |     :----:      |
+|       5432        |       3001      |      3000       |
 
 ## Available scripts
 
@@ -223,3 +227,5 @@ See also [REQUIREMENTS](./REQUIREMENTS.md)
 </table>
 
 ## UI
+
+The UI built with the help of [create react app](https://create-react-app.dev/)
