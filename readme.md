@@ -16,10 +16,9 @@ Full stack app built with Postgres-Express-React-Nodejs Stack, hosted on [AWS](h
 
 ## Table of content
 
+- [Dependencies](./docs/dependencies.md)
 - [Infrastructure](./docs/Infrastructure.md)
 - [Pipeline](./docs/pipeline.md)
-- [Dependencies](./docs/dependencies.md)
-- [AWS Screenshot](./docs/aws.md)
 - [Project setup](#project-setup)
 - [Available scripts](#available-scripts)
 - Three tiers architecture 
@@ -88,7 +87,10 @@ TOKEN_SECRET=
 
 8. To start the app run `npm start`
 
-9. **Database Port:** 5432, **Server Port:** 3001, **Client Port:** 3000
+
+| **Database Port** | **Server Port** |   **Client Port** |
+|   :----:          |    :----:       |    :-------:      |
+| 5432              | 3001            | 3000              |
 
 ## Available scripts
 
