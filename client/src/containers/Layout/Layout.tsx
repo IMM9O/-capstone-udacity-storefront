@@ -11,11 +11,17 @@ import {
   HomeFilled,
 } from '@ant-design/icons';
 import './Layout.css';
+import { useAuth } from '../../hooks/useAuth';
 
 const { Header, Sider, Content } = Layout;
 
-function AppLayout(props: any): JSX.Element {
+type Props = {
+  children: JSX.Element | JSX.Element[];
+};
+
+function AppLayout(props: Props): JSX.Element {
   const [collapsed, setCollapsed] = useState(false);
+  const { isAuth, sigout } = useAuth();
 
   return (
     <Layout className="app-layout">
@@ -25,21 +31,41 @@ function AppLayout(props: any): JSX.Element {
           <Menu.Item key="1" icon={<HomeFilled />}>
             <Link to="/">Home</Link>
           </Menu.Item>
-          <Menu.Item key="2" icon={<UserOutlined />}>
-            <Link to="/products">Products</Link>
-          </Menu.Item>
-          <Menu.Item key="3" icon={<VideoCameraOutlined />}>
-            <Link to="/orders">Orders</Link>
-          </Menu.Item>
-          <Menu.Item key="4" icon={<VideoCameraOutlined />}>
+          <Menu.Item key="2" icon={<VideoCameraOutlined />}>
             <Link to="/about">About</Link>
           </Menu.Item>
-          <Menu.Item key="5" icon={<UploadOutlined />}>
-            <Link to="/signup">Signup</Link>
+          {isAuth ? (
+            <>
+              <Menu.Item
+                key="3"
+                icon={<UploadOutlined />}
+                onClick={() => sigout()}
+              >
+                Logout
+              </Menu.Item>
+            </>
+          ) : (
+            <>
+              <Menu.Item key="4" icon={<UploadOutlined />}>
+                <Link to="/login">Login</Link>
+              </Menu.Item>
+              <Menu.Item key="5" icon={<UploadOutlined />}>
+                <Link to="/signup">Signup</Link>
+              </Menu.Item>
+            </>
+          )}
+          <Menu.Item key="6" icon={<UserOutlined />}>
+            <Link to="/products">Products</Link>
           </Menu.Item>
-          <Menu.Item key="6" icon={<UploadOutlined />}>
-            <Link to="/login">Login</Link>
-          </Menu.Item>
+          {/* {isAuth ? (
+            <>
+              <Menu.Item key="7" icon={<VideoCameraOutlined />}>
+                <Link to="/orders">Orders</Link>
+              </Menu.Item>
+            </>
+          ) : (
+            <></>
+          )} */}
         </Menu>
       </Sider>
       <Layout className="site-layout">
@@ -50,16 +76,16 @@ function AppLayout(props: any): JSX.Element {
           {collapsed ? (
             <MenuUnfoldOutlined
               className="trigger"
-              onClick={() => setCollapsed(r => !r)}
+              onClick={() => setCollapsed((r) => !r)}
             />
           ) : (
             <MenuFoldOutlined
               className="trigger"
-              onClick={() => setCollapsed(r => !r)}
+              onClick={() => setCollapsed((r) => !r)}
             />
           )}
 
-          <h1 className='header'>Udacity Storefront</h1>
+          <h1 className="header">Udacity Storefront</h1>
         </Header>
         <Content
           className="site-layout-background"

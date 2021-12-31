@@ -12,7 +12,7 @@ export const getUsers = async (_req: Request, res: Response) => {
     res.json(users);
   } catch (err) {
     res.status(400);
-    res.json(err);
+    res.json({ err });
   }
 };
 
@@ -24,7 +24,7 @@ export const getUser = async (_req: Request, res: Response) => {
     res.json(product);
   } catch (err) {
     res.status(400);
-    res.json(err);
+    res.json({ err });
   }
 };
 
@@ -51,10 +51,10 @@ export const createUser = async (_req: Request, res: Response) => {
       process.env.TOKEN_SECRET as string,
     );
 
-    res.json(token);
+    res.json({ token });
   } catch (err) {
     res.status(400);
-    res.json(err);
+    res.json({ err });
   }
 };
 
@@ -77,7 +77,7 @@ export const updateUser = async (_req: Request, res: Response) => {
     res.json(updatedUser);
   } catch (err) {
     res.status(400);
-    res.json(err);
+    res.json({ err });
   }
 };
 
@@ -89,33 +89,38 @@ export const deleteUser = async (_req: Request, res: Response) => {
     res.json(product);
   } catch (err) {
     res.status(400);
-    res.json(err);
+    res.json({ err });
   }
 };
 
 // authenticate
 export const authenticate = async (_req: Request, res: Response) => {
-  try {
-    const id: number = parseInt(_req.params.id);
-    const plainPassword = _req.body.password;
-    const user = await store.authenticate(id, plainPassword);
+  const email = _req.body.email;
+  const plainPassword = _req.body.password;
 
-    if (user) {
-      const token = jwt.sign(
-        {
-          firstname: user.firstname,
-          lastname: user.lastname,
-        },
-        process.env.TOKEN_SECRET as string,
-      );
+  if (!email || !plainPassword) {
+    res.status(401);
+    res.json({ error: 'Required fields are missing' });
+  } else {
+    try {
+      const user = await store.authenticate(email, plainPassword);
+      if (user) {
+        const token = jwt.sign(
+          {
+            firstname: user.firstname,
+            lastname: user.lastname,
+          },
+          process.env.TOKEN_SECRET as string,
+        );
 
-      res.json(token);
-    } else {
-      res.status(404);
-      res.json({ error: 'User Not Found!' });
+        res.json({ token });
+      } else {
+        res.status(404);
+        res.json({ error: 'Wrong username or password' });
+      }
+    } catch (err) {
+      res.status(400);
+      res.json({ err });
     }
-  } catch (err) {
-    res.status(400);
-    res.json(err);
   }
 };
