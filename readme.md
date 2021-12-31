@@ -16,10 +16,9 @@ Full stack app built with Postgres-Express-React-Nodejs Stack, hosted on [AWS](h
 
 ## Table of content
 
+- [Dependencies](./docs/dependencies.md)
 - [Infrastructure](./docs/Infrastructure.md)
 - [Pipeline](./docs/pipeline.md)
-- [Dependencies](./docs/dependencies.md)
-- [AWS Screenshot](./docs/aws.md)
 - [Project setup](#project-setup)
 - [Available scripts](#available-scripts)
 - Three tiers architecture 
