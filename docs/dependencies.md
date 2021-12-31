@@ -1,6 +1,9 @@
 # Storefront Dependencies
+### This is a full stack app used three-tier architecture and embraced `PERN` stack.
 
-This is a full stack app used three-tier architecture and embraced `PERN` stack.
+<p align="center">
+  <img hight="20px" src="./assets/images/pern-stack.png" />
+</p>
 
 ## Database
 
@@ -12,7 +15,7 @@ This is a full stack app used three-tier architecture and embraced `PERN` stack.
             </td>
             <td>
                 The Database engine used here is `PostgreSQL`. PostgreSQL, also known as Postgres, is a free and open-source relational database management system emphasizing extensibility and SQL compliance. It was originally named POSTGRES, referring to its origins as a successor to the Ingres database developed at the University of California, Berkeley. [Wikipedia](https://en.wikipedia.org/wiki/PostgreSQL)
-            <td>
+            </td>
         </tr>
     </tbody>
 </table>
@@ -62,7 +65,7 @@ This is a full stack app used three-tier architecture and embraced `PERN` stack.
             </td>
             <td>
                 React is basically a JavaScript library for building user interfaces. It is easy, efficient and painless way to create Interactive UIs. It is maintained by Facebook and a community of individual developers and companies. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes and for this reason only, it is used for developing single-page application or mobile applications.
-            <td>
+            </td>
         </tr>
    </tbody>
 </table>
