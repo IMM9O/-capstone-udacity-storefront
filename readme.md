@@ -106,13 +106,11 @@ TOKEN_SECRET=
 
 ## Database
 
-Design and relationships ![Database Diagram](./docs/assets/images/database.png 'Design and relationships')
-
-Migrations ![Database Migrations](./docs/assets/images/migration-screenshot.png 'Migrations')
+For More information go to here => [Database](./docs/dependencies.md#database)
 
 ## APIs
 
-See also [REQUIREMENTS](./REQUIREMENTS.md)
+For More information go to here => [REQUIREMENTS](./REQUIREMENTS.md)
 
 <table>
     <th>
@@ -228,4 +226,4 @@ See also [REQUIREMENTS](./REQUIREMENTS.md)
 
 ## UI
 
-The UI built with the help of [create react app](https://create-react-app.dev/)
+The UI built with the help of [create react app](https://create-react-app.dev/). For More information go to here => [UI](./docs/dependencies.md#ui)

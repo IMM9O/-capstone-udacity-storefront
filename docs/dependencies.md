@@ -28,7 +28,6 @@
 3. Add a database.json reference file in the root of the project. Later, when we are working with multiple 1. databases - this will allow us to specify what database we want to run migrations on. Here is an example 1. database.json, you will just need to change the database names:
 
 ```json
-// If you install dontenv package 
 {
   "defaultEnv": {"ENV": "NODE_ENV"},
   "dev": {
@@ -55,10 +54,20 @@
 }
 
 ```
-4. Create a migration db-migrate create <table-name>-table --sql-file
+4. Create a migration `db-migrate create <table-name>-table --sql-file`
 5. Add the SQL you need to the up and down sql files
-6. Bring the migration up db-migrate up
-7. Bring the migration down db-migrate down
+6. Bring the migration up `db-migrate up` or `npm run db:up`
+7. Bring the migration down `db-migrate down` or `npm run db:down`
+
+<p align="center">
+<img alt="migration screenshot" src="./assets/images/migration-screenshot.png" style="max-width: 100%;">
+<p>Migration screenshot after running db:up script</p>
+</p>
+
+<p align="center">
+<img alt="migration screenshot" src="./assets/images/database.png" style="max-width: 100%;">
+<p>The database schema diagram</p>
+</p>
 
 
 ## API
