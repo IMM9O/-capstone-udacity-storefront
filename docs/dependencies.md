@@ -61,12 +61,12 @@
 
 <p align="center">
 <img alt="migration screenshot" src="./assets/images/migration-screenshot.png" style="max-width: 100%;">
-<p>Migration screenshot after running db:up script</p>
+<p align="center">Migration screenshot after running db:up script</p>
 </p>
 
 <p align="center">
 <img alt="migration screenshot" src="./assets/images/database.png" style="max-width: 100%;">
-<p>The database schema diagram</p>
+<p align="center">The database schema diagram</p>
 </p>
 
 
