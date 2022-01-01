@@ -10,7 +10,7 @@
 <table style="width: 100%;">
    <tbody>
         <tr>
-            <td>
+            <td style="width: 20%;">
                 <img style="max-width: 100%;" src="./assets/images/postgres.png">
             </td>
             <td>
@@ -75,28 +75,28 @@
 <table style="width: 100%;">
     <thead>
         <tr>
-            <td>NodeJs</td>
-            <td>ExpressJs</td>
+            <td style="max-width: 50%;">NodeJs</td>
+            <td style="max-width: 50%;">ExpressJs</td>
         </tr>
     </thead>
     <tbody>
         <tr>
-          <td>
+          <td style="width: 50%;">
             <p align="center">
                 <img  style="max-width: 100%; height: 100px" src="./assets/images/nodejs.png">
             </p>
           </td>
-          <td>
+          <td style="width: 50%;">
             <p align="center">
                 <img  style="max-width: 100%; height: 100px" src="./assets/images/expressjs.png">
             </p>          
           </td>
         </tr>
         <tr>
-          <td>
+          <td style="width: 50%;">
             Node.js is a JavaScript runtime built on Chrome’s V8 JavaScript engine for developing server-side and networking applications. Being an asynchronous event-driven JavaScript runtime, it is used to build fast and scalable network applications. Node.js is free and open source server environment that runs on many platforms.
           </td>
-          <td>
+          <td style="width: 50%;">
             It is a web application framework for Node.js. Being a free and open software, it is used for building web applications and specially APIs. Express provides a thin layer of fundamental web application features, without obscuring Node.js features that you already know.
           </td>
         </tr>
@@ -194,7 +194,7 @@ npm i -D eslint prettier eslint-config-prettier eslint-plugin-prettier @typescri
 <table style="width: 100%;">
    <tbody>
         <tr>
-            <td>
+            <td style="width: 20%;">
                 <img style="max-width: 100%;" src="./assets/images/reactjs.png">
             </td>
             <td>
