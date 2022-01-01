@@ -153,7 +153,7 @@
 1. Install [eslint](https://eslint.org/) and configure it to work with [typescript](https://www.typescriptlang.org/) and [prettier](https://prettier.io/) 
 
 ```bash
-npm i -D eslint eslint-config-prettier eslint-plugin-prettier prettier @typescript-eslint/eslint-plugin @typescript-eslint/parser
+npm i -D eslint prettier eslint-config-prettier eslint-plugin-prettier @typescript-eslint/eslint-plugin @typescript-eslint/parser
 ```
 
 2. Create those files `.eslintrc`, and `.prettierrc`.
@@ -161,7 +161,6 @@ npm i -D eslint eslint-config-prettier eslint-plugin-prettier prettier @typescri
 3. Open `.eslintrc` and fill it with those configurations.
 
 ```json
-// .eslintrc
 {
   "parser": "@typescript-eslint/parser",
   "extends": ["plugin:@typescript-eslint/recommended"],
@@ -170,8 +169,9 @@ npm i -D eslint eslint-config-prettier eslint-plugin-prettier prettier @typescri
 }
 ```
 
+4. Open `.prettierrc` and fill it with those configurations.
+
 ```json
-// .prettierrc 
 {
   "semi": true,
   "trailingComma": "all",
@@ -194,3 +194,80 @@ npm i -D eslint eslint-config-prettier eslint-plugin-prettier prettier @typescri
         </tr>
    </tbody>
 </table>
+
+### Development
+
+1. Install [create react app](https://create-react-app.dev/) `npx create-react-app client --template typescript`
+2. Installing create react app will create, setup TDD, and Typescript environments out of the box.
+
+### Code quality
+
+For more information see this [link](https://brygrill.medium.com/create-react-app-with-typescript-eslint-prettier-and-github-actions-f3ce6a571c97)
+
+1. Install [eslint](https://eslint.org/) and configure it to work with [typescript](https://www.typescriptlang.org/) and [prettier](https://prettier.io/) 
+
+```bash
+npm i -D eslint prettier eslint-config-prettier eslint-plugin-prettier  @typescript-eslint/eslint-plugin @typescript-eslint/parser
+```
+
+2. Install eslint plugin specific for client projects.
+
+```bash
+$ npm i -D eslint-config-airbnb eslint-config-airbnb-typescript eslint-plugin-import eslint-plugin-jest eslint-plugin-jsx-a11y eslint-plugin-react eslint-plugin-react-hooks 
+```
+
+3. Create those files `.eslintrc`, and `.prettierrc`.
+
+4. Open `.eslintrc` and fill it with those configurations.
+
+```json
+{
+  "extends": [
+    "plugin:import/recommended",
+    "airbnb-typescript",
+    "airbnb/hooks",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:jest/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": ["react", "@typescript-eslint", "jest"],
+  "env": {
+    "browser": true,
+    "es6": true,
+    "jest": true
+  },
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "project": "tsconfig.json",
+    "sourceType": "module"
+  },
+  "rules": {
+    "linebreak-style": "off",
+    "jest/no-disabled-tests": "off",
+    "jest/no-test-prefixes": "off",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ]
+  }
+}
+```
+5. Open `.prettierrc` and fill it with those configurations.
+
+```json
+{
+  "semi": true,
+  "trailingComma": "all",
+  "singleQuote": true,
+  "printWidth": 70
+}
+```
