@@ -26,6 +26,7 @@
     "prettier": "prettier --config .prettierrc src/**/*.ts{,x} --write",
     "test": "react-scripts test",
     "build": "react-scripts build",
+    "deploy": "chmod +x bin/deploy.sh && bin/deploy.sh",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

@@ -1,1 +1,0 @@
-aws s3 cp --recursive ./client/build s3://storefront123/

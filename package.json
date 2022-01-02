@@ -26,8 +26,8 @@
     "build:server": "cd ./server && npm run build",
     "build:client": "cd ./client && npm run build",
     "deploy": "run-p deploy:**",
-    "deploy:server": "chmod +x bin/deploy-server.sh && bin/deploy-server.sh",
-    "deploy:client": "chmod +x bin/deploy-client.sh && bin/deploy-client.sh"
+    "deploy:server": "cd ./server && npm run deploy",
+    "deploy:client": "cd ./client && npm run deploy"
   },
   "repository": {
     "type": "git",
