@@ -4,13 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/index.ts",
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.ts",
     "lint": "eslint . --ext .ts",
     "prettier": "prettier --config .prettierrc src/**/*.ts --write",
     "jasmine": "jasmine-ts",
     "test": "cross-env NODE_ENV=test db-migrate reset --env test && db-migrate up --env test && npm run jasmine",
     "test:windows": "set NODE_ENV=test& db-migrate reset --env test && db-migrate up --env test && npm run jasmine",
-    "build": "npx tsc",
+    "build": "npx tsc && cp package-prod.json dist/package.json && cp .npmrc dist/.npmrc",
     "db:up": "db-migrate up",
     "db:down": "db-migrate reset"
   },
