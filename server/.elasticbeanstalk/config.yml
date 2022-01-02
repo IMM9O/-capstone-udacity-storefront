@@ -3,7 +3,7 @@ branch-defaults:
     environment: Demo999-env
     group_suffix: null
 deploy:
-  artifact: dist/.
+  artifact: dist/dist.zip
 global:
   application_name: demo999
   branch: null
