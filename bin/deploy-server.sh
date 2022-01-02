@@ -1,3 +1,2 @@
-cd ./server/dist/
-eb deploy Demo999-env
+eb use demo999
 eb health
