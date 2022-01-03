@@ -41,9 +41,11 @@ jobs:
           command: |
             npm run deploy:client
 workflows:
-  build-deploy:
+  Storefront:
     jobs:
-      - build: # << the job to conditionally run based on the filter-by-branch-name.
+      - build:
           filters:
             branches:
-              only: main
+              only:
+                - main
+                - master
