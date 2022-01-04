@@ -1,6 +1,6 @@
 {
   "name": "udacity-storefront",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "It is a simple server side application provide APIs to manage, interact with online store using tech stack nodejs, postgres, and express.",
   "main": "index.js",
   "directories": {
