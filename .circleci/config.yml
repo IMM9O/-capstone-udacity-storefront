@@ -14,26 +14,26 @@ jobs:
       - eb/setup
       # look for existing cache and restore if found
       - restore_cache:
-          key: v1-deps-{{ checksum "server/package-lock.json" }}
+          key: v1-deps-{{ checksum "server/package.json" }}
       - run:
           name: Install BackEnd Dependencies
           command: |
             npm run install:server
       # save any changes to the cache
       - save_cache:
-          key: v1-deps-{{ checksum "server/package-lock.json" }}
+          key: v1-deps-{{ checksum "server/package.json" }}
           paths: 
             - server/node_modules  
       # look for existing cache and restore if found
       - restore_cache:
-          key: v1-deps-{{ checksum "client/package-lock.json" }}
+          key: v1-deps-{{ checksum "client/package.json" }}
       - run:
           name: Install FrontEnd Dependencies
           command: |
             npm run install:client
       # save any changes to the cache
       - save_cache:
-          key: v1-deps-{{ checksum "client/package-lock.json" }}
+          key: v1-deps-{{ checksum "client/package.json" }}
           paths: 
             - client/node_modules  
       - run:
