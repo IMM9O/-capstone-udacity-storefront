@@ -12,14 +12,30 @@ jobs:
       - checkout
       - aws-cli/setup
       - eb/setup
+      # look for existing cache and restore if found
+      - restore_cache:
+          key: v1-deps-{{ checksum "server/package-lock.json" }}
       - run:
           name: Install BackEnd Dependencies
           command: |
             npm run install:server
+      # save any changes to the cache
+      - save_cache:
+          key: v1-deps-{{ checksum "server/package-lock.json" }}
+          paths: 
+            - server/node_modules  
+      # look for existing cache and restore if found
+      - restore_cache:
+          key: v1-deps-{{ checksum "client/package-lock.json" }}
       - run:
           name: Install FrontEnd Dependencies
           command: |
             npm run install:client
+      # save any changes to the cache
+      - save_cache:
+          key: v1-deps-{{ checksum "client/package-lock.json" }}
+          paths: 
+            - client/node_modules  
       - run:
           name: Test FrontEnd Application
           command: |
