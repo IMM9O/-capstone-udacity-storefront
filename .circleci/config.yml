@@ -3,13 +3,17 @@ orbs:
   eb: circleci/aws-elastic-beanstalk@1.0.0
   node: circleci/node@5.0.0
   aws-cli: circleci/aws-cli@1.3.1
-jobs:
-  build:
+executors:
+  base-executor:
     docker:
-      - image: 'cimg/base:stable'
+      - image: cimg/node:17.3.0
+    working_directory: /temp
+jobs:
+  Install:
+    executor: base-executor
     steps:
-      - node/install
       - checkout
+<<<<<<< HEAD
       - aws-cli/setup
       - eb/setup
       # look for existing cache and restore if found
@@ -27,6 +31,8 @@ jobs:
       # look for existing cache and restore if found
       - restore_cache:
           key: v1-deps-{{ checksum "client/package.json" }}
+=======
+>>>>>>> 16449673c3d88f5958e6602ba54cf579f3cc7f3b
       - run:
           name: Install FrontEnd Dependencies
           command: |
@@ -37,9 +43,39 @@ jobs:
           paths: 
             - client/node_modules  
       - run:
+          name: Lint FrontEnd Application
+          command: |
+<<<<<<< HEAD
+=======
+            npm run install:server
+  Lint:
+    executor: base-executor
+    steps:
+      - attach_workspace:
+          at: /temp
+      - run:
+          name: Lint FrontEnd Application
+          command: |
+>>>>>>> 16449673c3d88f5958e6602ba54cf579f3cc7f3b
+            npm run lint:client
+      - run:
+          name: Lint Backend Application
+          command: |
+            npm run lint:server
+  Test:
+    executor: base-executor
+    steps:
+      - attach_workspace:
+          at: /temp
+      - run:
           name: Test FrontEnd Application
           command: |
             npm run test:client
+  Build:
+    executor: base-executor
+    steps:
+      - attach_workspace:
+          at: /temp
       - run:
           name: Build BackEnd
           command: |
@@ -48,6 +84,39 @@ jobs:
           name: Build FrontEnd
           command: |
             npm run build:client
+  Deploy:
+    executor: base-executor
+    steps:
+      - attach_workspace:
+          at: /temp
+      - aws-cli/setup
+      - run:
+          name: Deploy FrontEnd App
+          command: |
+            npm run deploy
+
+workflows:
+  Storefront:
+    jobs:
+      - Install
+      - Lint:
+          requires:
+            - Install
+      - Test:
+          requires:
+            - Install
+            - Lint
+      - Build:
+          requires:
+            - Install
+            - Lint
+            - Test
+          filters:
+            branches:
+              only:
+                - main
+                - master
+<<<<<<< HEAD
       - run:
           name: Deploy Backend App
           command: |
@@ -60,6 +129,14 @@ workflows:
   Storefront:
     jobs:
       - build:
+=======
+      - Deploy:
+          requires:
+            - Install
+            - Lint
+            - Test
+            - Build
+>>>>>>> 16449673c3d88f5958e6602ba54cf579f3cc7f3b
           filters:
             branches:
               only:
