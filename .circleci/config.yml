@@ -13,7 +13,6 @@ jobs:
     executor: base-executor
     steps:
       - checkout
-<<<<<<< HEAD
       - aws-cli/setup
       - eb/setup
       # look for existing cache and restore if found
@@ -31,8 +30,6 @@ jobs:
       # look for existing cache and restore if found
       - restore_cache:
           key: v1-deps-{{ checksum "client/package.json" }}
-=======
->>>>>>> 16449673c3d88f5958e6602ba54cf579f3cc7f3b
       - run:
           name: Install FrontEnd Dependencies
           command: |
@@ -45,98 +42,15 @@ jobs:
       - run:
           name: Lint FrontEnd Application
           command: |
-<<<<<<< HEAD
-=======
-            npm run install:server
-  Lint:
-    executor: base-executor
-    steps:
-      - attach_workspace:
-          at: /temp
-      - run:
-          name: Lint FrontEnd Application
-          command: |
->>>>>>> 16449673c3d88f5958e6602ba54cf579f3cc7f3b
             npm run lint:client
       - run:
           name: Lint Backend Application
           command: |
             npm run lint:server
-  Test:
-    executor: base-executor
-    steps:
-      - attach_workspace:
-          at: /temp
-      - run:
-          name: Test FrontEnd Application
-          command: |
-            npm run test:client
-  Build:
-    executor: base-executor
-    steps:
-      - attach_workspace:
-          at: /temp
-      - run:
-          name: Build BackEnd
-          command: |
-            npm run build:server
-      - run:
-          name: Build FrontEnd
-          command: |
-            npm run build:client
-  Deploy:
-    executor: base-executor
-    steps:
-      - attach_workspace:
-          at: /temp
-      - aws-cli/setup
-      - run:
-          name: Deploy FrontEnd App
-          command: |
-            npm run deploy
-
-workflows:
-  Storefront:
-    jobs:
-      - Install
-      - Lint:
-          requires:
-            - Install
-      - Test:
-          requires:
-            - Install
-            - Lint
-      - Build:
-          requires:
-            - Install
-            - Lint
-            - Test
-          filters:
-            branches:
-              only:
-                - main
-                - master
-<<<<<<< HEAD
-      - run:
-          name: Deploy Backend App
-          command: |
-            npm run deploy:server
-      - run:
-          name: Deploy FrontEnd App
-          command: |
-            npm run deploy:client
 workflows:
   Storefront:
     jobs:
       - build:
-=======
-      - Deploy:
-          requires:
-            - Install
-            - Lint
-            - Test
-            - Build
->>>>>>> 16449673c3d88f5958e6602ba54cf579f3cc7f3b
           filters:
             branches:
               only:
