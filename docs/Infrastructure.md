@@ -85,6 +85,8 @@ global:
 
 When deploying to Elastic Beanstalk running Node >= 8.x, node-gyp doesn't have sufficient permissions to write to the tmp directory. bcrypt won't install and the application deployment will fail.
 
+This issue happen with [sharp](https://www.npmjs.com/package/sharp), [bcrypt](https://www.npmjs.com/package/bcrypt) packages, and other packages which require elevated permissions.
+
 **Solution 1:** A workaround is to add a .npmrc file to the root of your project that will force node-gyp to run as root and allow the installation to complete. 
 File contents for .npmrc:
 
