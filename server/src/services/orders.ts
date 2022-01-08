@@ -110,13 +110,13 @@ export const deleteOrder = async (_req: Request, res: Response) => {
   }
 };
 
-export const addProduct = async (_req: Request, res: Response) => {
+export const addOrderProduct = async (_req: Request, res: Response) => {
   try {
     const orderId: number = parseInt(_req.params.id);
     const payload = _req.body.products as OrderItem[];
 
     payload.forEach(async item => {
-      await store.addProduct(orderId, item.product_id, item.quantity);
+      await store.addOrderProduct(orderId, item.product_id, item.quantity);
     });
 
     const products = await store.getOrderProducts(orderId);

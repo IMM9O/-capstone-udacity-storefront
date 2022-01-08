@@ -8,7 +8,7 @@ import {
   getOrder,
   getOrders,
   updateOrder,
-  addProduct,
+  addOrderProduct,
   getOrderProducts,
 } from '../../services/orders';
 
@@ -39,7 +39,7 @@ orders.put('/:id', [verifyAuthToken], updateOrder);
 orders.delete('/:id', [verifyAuthToken], deleteOrder);
 
 // add products to order [token required]
-orders.post('/:id/products', [verifyAuthToken], addProduct);
+orders.post('/:id/products', [verifyAuthToken], addOrderProduct);
 
 // get order products [token required]
 orders.get('/:id/products', [verifyAuthToken], getOrderProducts);
