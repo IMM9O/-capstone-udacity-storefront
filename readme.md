@@ -60,17 +60,21 @@ Full stack app built with Postgres-Express-React-Nodejs Stack, hosted on [AWS](h
 
 ```sql
 /** DEV database **/
-CREATE DATABASE udacity_storefront_dev;
+CREATE DATABASE storefront_dev;
 /** Test database **/
-CREATE DATABASE udacity_storefront_test;
+CREATE DATABASE storefront_test;
 /** Production database **/
-CREATE DATABASE udacity_storefront;
+CREATE DATABASE storefront_prod;
 ```
 
 7. Setup database `npm run db:up`.
 
+8. Seed the database with dummy data for testing:
+   ```bash
+   cd server && npm run seed
+   ```
 
-8. Make a copy for `.env.example` file to `.env` and then change the variables to match your environment.
+9. Make a copy for `.env.example` file to `.env` and then change the variables to match your environment.
 
 > Don't forget to replace {database_password} with your current postgres password
 
@@ -79,9 +83,9 @@ NODE_ENV=dev
 DB_HOST=127.0.0.1
 DB_USER=postgres
 DB_PASSWORD={database_password}
-DB_DATABASE_DEV=udacity_storefront_dev
-DB_DATABASE_TEST=udacity_storefront_test
-DB_DATABASE_PROD=udacity_storefront
+DB_DATABASE_DEV=storefront_dev
+DB_DATABASE_TEST=storefront_test
+DB_DATABASE_PROD=storefront_prod
 BCRYPT_PASSWORD=
 SALT_ROUNDS=
 TOKEN_SECRET=
@@ -91,6 +95,114 @@ TOKEN_SECRET=
 
 > **Note:** This command will start both app the client and the server
 
+## Docker Setup
+
+### Prerequisites
+
+- [Docker](https://www.docker.com/get-started)
+- [Docker Compose](https://docs.docker.com/compose/install/)
+
+### Quick Start
+
+```bash
+# Build and run all services
+docker-compose up --build
+```
+
+This will start:
+- **PostgreSQL** on port `5432`
+- **Backend API** on port `3001`
+
+### Manual Commands
+
+```bash
+# Build the backend image
+docker-compose build
+
+# Start services
+docker-compose up
+
+# Start services in detached mode
+docker-compose up -d
+
+# View logs
+docker-compose logs -f backend
+
+# Stop services
+docker-compose down
+
+# Seed the database (run after containers are up)
+docker-compose exec backend npm run seed
+```
+
+### Database Access
+
+Connect to PostgreSQL running in Docker:
+
+```bash
+# Using docker exec
+docker-compose exec postgres psql -U postgres -d storefront_dev
+
+# Using psql directly (ensure postgres is running locally)
+psql -h localhost -U postgres -d storefront_dev
+```
+
+### Default Credentials
+
+| Variable | Default Value |
+|----------|---------------|
+| DB_USER | postgres |
+| DB_PASSWORD | postgres |
+| DB_DATABASE_DEV | storefront_dev |
+
+### Seed Data
+
+Run the seed script to populate the database with test data:
+
+```bash
+cd server && npm run seed
+```
+
+This creates:
+- 3 test users (password: `password123`)
+- 8 products across different categories
+- 3 orders with products attached
+
+To view the data in the database:
+
+```bash
+psql -h localhost -U postgres -d storefront_dev
+```
+
+Then run SQL queries:
+
+```sql
+SELECT * FROM users;
+SELECT * FROM products;
+SELECT * FROM orders;
+SELECT * FROM order_products;
+\q
+```
+
+### Troubleshooting
+
+```bash
+# Reset database (removes all data)
+docker-compose down -v
+
+# Rebuild and start fresh
+docker-compose up --build --force-recreate
+```
+
+### Environment Variables
+
+To override defaults, create a `.env` file:
+
+```env
+POSTGRES_PASSWORD=your_password
+DB_USER=your_user
+DB_DATABASE_DEV=your_database
+```
 
 | **Database Port** | **Server Port** | **Client Port** |
 |      :----:       |      :----:     |     :----:      |
@@ -99,6 +211,7 @@ TOKEN_SECRET=
 ## Available scripts
 
 - To start both frontend and backend app run `npm start` 
+- To seed the database with test data run `npm run seed` (in server directory)
 - To check app format run `npm run prettier`
 - To check app error run `npm run lint`
 - To test both frontend and backend app run `npm run test`
