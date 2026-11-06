@@ -1,14 +1,8 @@
 # Storefront
 
-[![CircleCI](https://circleci.com/gh/IMM9O/udacity-storefront/tree/master.svg?style=svg)](http://storefront123.s3-website-us-east-1.amazonaws.com)
+Full-stack shop built with the PERN stack (PostgreSQL, Express, React, and Node.js). This is a project for the Udacity Full Stack JavaScript Nanodegree.
 
-[Link To Live Web](http://storefront123.s3-website-us-east-1.amazonaws.com)
-
-<p>
-
-Full stack app built with Postgres-Express-React-Nodejs Stack, hosted on [AWS](https://aws.amazon.com/), and use [CircleCI](https://circleci.com/) as CI/CD.
-
-</p>
+During the course, the app ran on [AWS](https://aws.amazon.com/) and deployed through a [CircleCI](https://circleci.com/) pipeline. The live site is offline now. [Pipeline](./docs/pipeline.md) shows the CircleCI configuration and a build.
 
 <p align="center">
 <img width="512" height="512" src="./docs/assets/images/storefront-logo.png">
@@ -44,7 +38,7 @@ Full stack app built with Postgres-Express-React-Nodejs Stack, hosted on [AWS](h
 
 ## Project setup
 
-1. Clone the project `git clone https://github.com/IMM9O/udacity-storefront.git`.
+1. Clone the project `git clone https://github.com/IMM9O/pern-storefront.git`.
 
 2. Installation is done using the [npm install command](https://docs.npmjs.com/downloading-and-installing-packages-locally): `npm install`.
 
